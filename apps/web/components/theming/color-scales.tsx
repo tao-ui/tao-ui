@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ColorRows = ({ colors: any }) => {
+export const ColorScales = ({ colors: any }) => {
   return (
     <>
       <div>name</div>

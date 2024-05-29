@@ -1,1 +1,1 @@
-export { Theaming } from "./theming";
+export { Theming } from "./theming";
