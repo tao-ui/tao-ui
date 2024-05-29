@@ -1,8 +1,9 @@
 import * as Tabs from "@radix-ui/react-tabs";
+import React from "react";
 
-export const Sections = () => {
+export const Main = () => {
   return (
-    <div>
+    <main>
       <Tabs.Root className="" defaultValue="tab1">
         <Tabs.List className="" aria-label="Manage your account">
           <Tabs.Trigger className="" value="tab1">
@@ -23,6 +24,6 @@ export const Sections = () => {
         <Tabs.Content className="" value="tab3"></Tabs.Content>
         <Tabs.Content className="" value="tab4"></Tabs.Content>
       </Tabs.Root>
-    </div>
+    </main>
   );
 };
