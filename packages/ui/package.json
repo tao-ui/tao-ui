@@ -1,0 +1,107 @@
+{
+  "name": "tao-react",
+  "version": "0.0.1",
+  "description": "Tao UI Components for React.",
+  "keywords": [
+    "design-system",
+    "tao",
+    "tao-react",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
+  ],
+  "homepage": "",
+  "bugs": "",
+  "repository": {
+    "type": "git",
+    "url": "",
+    "directory": "packages/ui"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./components/*": {
+      "types": "./dist/types/components/*/index.d.ts",
+      "import": "./dist/esm/components/*/index.mjs",
+      "require": "./dist/cjs/components/*/index.cjs"
+    },
+    "./tailwind": {
+      "types": "./dist/types/tailwind.d.ts",
+      "import": "./dist/esm/tailwind.mjs",
+      "require": "./dist/cjs/tailwind.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun --bun rollup -c",
+    "clean": "rimraf .turbo coverage dist node_modules tsconfig.tsbuildinfo",
+    "dev": "bun run build --watch",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepack": "clean-package",
+    "prepublishOnly": "bun run build",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@floating-ui/core": "1.6.0",
+    "@floating-ui/react": "0.26.10",
+    "class-variance-authority": "^0.7.0",
+    "classnames": "2.5.1",
+    "clsx": "^2.1.1",
+    "debounce": "2.0.0",
+    "react-icons": "5.0.1",
+    "tailwind-merge": "2.2.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "14.2.2",
+    "@testing-library/user-event": "14.5.2",
+    "@types/react": "18.2.73",
+    "@types/react-dom": "18.2.23",
+    "@typescript-eslint/eslint-plugin": "7.4.0",
+    "@typescript-eslint/parser": "7.4.0",
+    "@vitejs/plugin-react": "4.2.1",
+    "@vitest/coverage-v8": "1.4.0",
+    "eslint-plugin-react": "7.34.1",
+    "eslint-plugin-storybook": "0.8.0",
+    "eslint-plugin-vitest": "0.4.1",
+    "fast-glob": "3.3.2",
+    "jsdom": "24.0.0",
+    "rollup": "4.13.2",
+    "rollup-plugin-esbuild": "6.1.1",
+    "rollup-plugin-use-client": "1.4.0",
+    "typescript": "5.4.3",
+    "vitest": "1.4.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tailwindcss": "^3"
+  },
+  "clean-package": {
+    "remove": [
+      "devDependencies",
+      "clean-package"
+    ],
+    "replace": {
+      "scripts": {
+        "postpublish": "clean-package restore"
+      }
+    }
+  }
+}

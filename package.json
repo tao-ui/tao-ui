@@ -1,0 +1,52 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build:storybook": "turbo build --filter=storybook",
+    "check-updates": "npm-check-updates --deep -i",
+    "clean": "turbo clean && rimraf .turbo node_modules",
+    "convert:tw": "bun run convert-tw-theme.js",
+    "dev": "turbo dev",
+    "dev:storybook": "turbo dev --filter=storybook",
+    "dev:ui": "turbo dev --filter=tao-react",
+    "dev:web": "turbo dev --filter=web",
+    "format": "turbo format",
+    "format:check": "turbo format:check",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "prepare": "husky",
+    "test:coverage": "turbo test:coverage",
+    "test:turbo": "turbo test",
+    "typecheck": "turbo typecheck"
+  },
+  "dependencies": {
+    "radix-ui": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/web": "0.0.142",
+    "clean-package": "2.2.0",
+    "cspell": "^8.8.1",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-tailwindcss": "3.15.1",
+    "husky": "^9.0.11",
+    "npm-check-updates": "16.14.18",
+    "prettier": "3.2.5",
+    "prettier-plugin-packagejson": "2.4.14",
+    "prettier-plugin-tailwindcss": "0.5.13",
+    "rimraf": "5.0.5",
+    "turbo": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "bun@1.1.0"
+}
