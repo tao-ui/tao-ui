@@ -168,38 +168,6 @@ const INIT_SETTINGS = {
     area: "0 2px 4px 0 22, 19, 20 / 0.1;",
     el: "0 1px 2px 0 22, 19, 20 / 0.1;",
   },
-  fontSize: {
-    "btn-lg": "1.125rem",
-    "btn-sm": "1rem",
-    btn: "1rem",
-    input: "1rem",
-  },
-  height: {
-    "btn-icon": "2.25rem",
-    "btn-lg": "3.375rem",
-    "btn-sm": "2.125rem",
-    btn: "2.625rem",
-    chip: "1.75rem",
-    checkbox: "2.5rem",
-  },
-  width: {
-    "btn-icon": "2.25rem",
-    "chip-icon": "1rem",
-    "input-icon": "1rem",
-    checkbox: "2.5rem",
-  },
-  padding: {
-    "btn-lg": ".5rem 1.5rem",
-    "btn-sm": ".5rem 1rem",
-    btn: ".5rem 1.25rem",
-    chip: ".5rem .625rem",
-    input: ".875rem 1.375rem",
-  },
-  spacing: {
-    btn: ".5rem",
-    chip: "0rem",
-    input: ".875rem",
-  },
   fontFamily: {
     sans: [
       "Inter",
@@ -246,6 +214,38 @@ const INIT_SETTINGS = {
       "Courier New",
       "monospace",
     ],
+  },
+  fontSize: {
+    "btn-lg": "1.125rem",
+    "btn-sm": "1rem",
+    btn: "1rem",
+    input: "1rem",
+  },
+  height: {
+    "btn-icon": "2.25rem",
+    "btn-lg": "3.375rem",
+    "btn-sm": "2.125rem",
+    btn: "2.625rem",
+    chip: "1.75rem",
+    checkbox: "2.5rem",
+  },
+  padding: {
+    "btn-lg": ".5rem 1.5rem",
+    "btn-sm": ".5rem 1rem",
+    btn: ".5rem 1.25rem",
+    chip: ".5rem .625rem",
+    input: ".875rem 1.375rem",
+  },
+  spacing: {
+    btn: ".5rem",
+    chip: "0rem",
+    input: ".875rem",
+  },
+  width: {
+    "btn-icon": "2.25rem",
+    "chip-icon": "1rem",
+    "input-icon": "1rem",
+    checkbox: "2.5rem",
   },
 };
 
