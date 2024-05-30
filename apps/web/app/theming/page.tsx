@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { Theaming } from "~/components/theming/";
+import { Theming } from "~/components/theming/";
 
-export default function Theming() {
+export default function ThemingPage() {
   return (
     <>
-      <Theaming />
+      <Theming />
     </>
   );
 }
