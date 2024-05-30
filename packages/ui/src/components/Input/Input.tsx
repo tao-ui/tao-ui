@@ -4,7 +4,7 @@ import { InputHTMLAttributes } from "react";
 import * as React from "react";
 
 const InputWrapperBase =
-  "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input text-page-foreground";
+  "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input page-foreground text-input";
 
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
