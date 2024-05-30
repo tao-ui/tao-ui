@@ -8,34 +8,78 @@ export const Theming = () => {
   return (
     <main>
       <Controls>
-        {/* <ControlsColorScales colors="theming.colorScales" /> */}
+        {/* <ColorScalesCtl colors="theming.colorScales">
+                {/* <ButtonCtls  
+                 backgroundColor="theming.color" 
+                borderColors="theming.borderColors" 
+                borderWidth="theming.borderWidth" 
+                boxShadow="theming.boxShadow" 
+                fontSize="theming.fontSize" 
+                height="theming.height" 
+                padding="theming.padding" 
+                spacing="theming.spacing" 
+                width="theming.width" 
+            /> */}
+        {/* <InputCtls 
+            backgroundColor="theming.color" 
+            borderColor="theming.borderColors" 
+            borderWidth="theming.borderWidth" 
+            boxShadow="theming.boxShadow" 
+            height="theming.height" 
+            padding="theming.padding" 
+            width="theming.width" 
+        />  */}
+        {/* </ ColorScalesCtls> */}
+
         {/* etc */}
       </Controls>
       <Tabs.Root className="" defaultValue="tab1">
         <Tabs.List className="" aria-label="Manage your account">
           <Tabs.Trigger className="" value="tab1">
             Theming
-            {/* <ColorScales colors="theming.colorScales" /> */}
-            {/* <Colors color="theming.colorVars" /> */}
-            {/* <BorderColors color="theming.borderColors" /> */}
-            {/* etc */}
           </Tabs.Trigger>
           <Tabs.Trigger className="" value="tab2">
             Code
           </Tabs.Trigger>
           <Tabs.Trigger className="" value="tab3">
             UI Mailer
-            {/* TODO: placeholder for content not created. But this is planned to be some sort of UI example. */}
           </Tabs.Trigger>
           <Tabs.Trigger className="" value="tab4">
             UI Dashboard
-            {/* TODO: placeholder for content not created. But this is planned to be some sort of UI example. */}
           </Tabs.Trigger>
         </Tabs.List>
-        <Tabs.Content className="" value="tab1"></Tabs.Content>
+        <Tabs.Content className="" value="tab1">
+          {/* <ColorScales colors="theming.colorScales" /> */}
+          {/* <Colors color="theming.colorVars" /> */}
+          {/* <Buttons
+                backgroundColor="theming.color"  
+                borderColor="theming.borderColors" 
+                borderWidth="theming.borderWidth" 
+                boxShadow="theming.boxShadow" 
+                fontSize="theming.fontSize" 
+                height="theming.height" 
+                padding="theming.padding" 
+                spacing="theming.spacing" 
+                width="theming.width" 
+            /> */}
+          {/* <Inputs 
+             backgroundColor="theming.color" 
+            borderColor="theming.borderColors" 
+            borderWidth="theming.borderWidth" 
+            boxShadow="theming.boxShadow" 
+            height="theming.height" 
+            padding="theming.padding" 
+            width="theming.width" 
+        /> */}
+          {/* etc */}
+        </Tabs.Content>
         <Tabs.Content className="" value="tab2"></Tabs.Content>
-        <Tabs.Content className="" value="tab3"></Tabs.Content>
-        <Tabs.Content className="" value="tab4"></Tabs.Content>
+        <Tabs.Content className="" value="tab3">
+          {/* TODO: placeholder for content not created. But this is planned to be some sort of UI example. */}
+        </Tabs.Content>
+        <Tabs.Content className="" value="tab4">
+          {/* TODO: placeholder for content not created. But this is planned to be some sort of UI example. */}
+        </Tabs.Content>
       </Tabs.Root>
     </main>
   );
