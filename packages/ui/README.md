@@ -1,16 +1,22 @@
-# 🚧 Tao UI (unreleased) 🚧</h1>
+# 🚧 Tao UI (Unreleased) 🚧
 
-## TODO
+## A Comprehensive Portfolio Project by Aaron Crockett: Engineer, Designer, and Artist
 
-Todos will be listed here until I have my project in github officially setup.
+This project is being set up as open source and may be released into the real world in the future.
+With this project, I will demonstrate the following:
 
-- The original project "template" was using an override of bun test mapping to test turbo. I would think using bun test is better. But look into this.
-- Eval if the script in the root is the appropriate spot
-- Remove the allowing or any in TS
-- Eval the convert-tw-theme file in terms of using Bun functions and the functionss usefullness in general. And how I will use TW default configs.
-- Eval the types in apps/web/data
-
-DOCS:
-
-- all docs
-- how content with Markdown works
+- Engineering, designing, and maintaining a real-world open source project that others can contribute to.
+- Designing the overall web layout, logo, and creating Figma designs for both desktop and mobile UI components.
+- Developing and utilizing a design system.
+- Setting up and maintaining a monorepo that includes UI components and a documentation website.
+- Implementing unit testing and Storybook components.
+- Using Husky to enforce testing, linting, and formatting.
+- Creating a documentation site with Markdown and Next.js.
+- Showcasing my React and Next.js skills, including both server-side and client-side components.
+- Writing Node.js scripts to work with the file system for project maintenance and the Tailwind plugin.
+- Extending TailwindCSS to suit the project's needs.
+- Developing a theme generator to enhance User Experience (UX) and Developer Experience (DX).
+- Establishing a GitHub workflow to facilitate contributions, maintaining a clear history through PRs linked to commits, with increasing specificity as the project progresses.
+- Managing packages effectively.
+- Addressing accessibility issues.
+- And more...
