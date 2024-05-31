@@ -35,7 +35,6 @@ export const ButtonCtrls: FC<ButtonCtrlsProps> = ({
   };
   return (
     <div>
-      <h3>Buttons</h3>
       <Input
         value={backgroundColor["btn-primary"].DEFAULT}
         onChange={(e) => handleBackgroundColorChange(e, "backgroundColor")}

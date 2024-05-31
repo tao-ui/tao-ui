@@ -25,7 +25,6 @@ export const InputCtrls: FC<InputCtrlsProps> = ({
 }) => {
   return (
     <div>
-      <h3>Inputs</h3>
       <Input id="input-ctrl-filler" />
     </div>
   );
