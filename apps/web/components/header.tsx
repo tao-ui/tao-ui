@@ -16,6 +16,7 @@ export const Header: FC = () => {
         <nav>
           <Link href="/theming">Theming</Link>
         </nav>
+        {/* TODO: Comp: Search Component */}
         <search>
           <Input
             id="site-search"
@@ -23,6 +24,7 @@ export const Header: FC = () => {
             LeadIcon={<RxMagnifyingGlass size={24} style={{ strokeWidth: 1, color: "#7B797F" }} />}
           />
         </search>
+        {/* Comp: Search Component */}
       </section>
     </header>
   );

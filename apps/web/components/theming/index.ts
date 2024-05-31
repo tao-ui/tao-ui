@@ -1,2 +1,3 @@
-export { Header } from "./header";
-export { Sections } from "./sections";
+export { Theming } from "./theming";
+export { Buttons } from "./buttons";
+export { Inputs } from "./inputs";

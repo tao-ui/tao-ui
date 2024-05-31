@@ -4,7 +4,7 @@ import { InputHTMLAttributes } from "react";
 import * as React from "react";
 
 const InputWrapperBase =
-  "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input text-page-foreground";
+  "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input page-foreground text-input bg-raised";
 
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
@@ -13,8 +13,7 @@ const IconBase = "w-input-icon mr-input";
 const InputVariants = cva(InputWrapperBase, {
   variants: {
     color: {
-      default: "bg-surface border-surface placeholder-surface-hint",
-      raised: "bg-raised border-raised placeholder-raised-hint",
+      default: "border-surface placeholder-surface-hint",
       custom: "",
     },
     size: {
@@ -31,7 +30,7 @@ const InputVariants = cva(InputWrapperBase, {
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  color?: "default" | "raised" | undefined;
+  color?: "default" | undefined;
   disabled?: boolean;
   error?: string;
   errorImgSrc?: string;
