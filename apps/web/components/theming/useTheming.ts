@@ -80,6 +80,7 @@ export const useTheming = () => {
   const buttonProps = {
     backgroundColor: themeState.colorVars,
     borderColor: themeState.borderColor,
+    borderRadius: themeState.borderRadius,
     borderWidth: themeState.borderWidth,
     boxShadow: themeState.boxShadow,
     fontSize: themeState.fontSize,
@@ -92,6 +93,7 @@ export const useTheming = () => {
   const inputProps = {
     backgroundColor: themeState.colorVars,
     borderColor: themeState.borderColor,
+    borderRadius: themeState.borderRadius,
     borderWidth: themeState.borderWidth,
     boxShadow: themeState.boxShadow,
     fontSize: themeState.fontSize,

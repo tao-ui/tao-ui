@@ -48,10 +48,10 @@ export const Theming = () => {
       </section>
       <div className="ml-4 flex-1 bg-neutral-cool-50 p-2">
         <Controls>
-          <Ctrl title="Buttons">
+          <Ctrl title="Buttons Placeholder">
             <ButtonCtrls updateButtonOpts={theming.updateButtonOpts} {...theming.buttonProps} />
           </Ctrl>
-          <Ctrl title="Inputs">
+          <Ctrl title="Inputs Placeholder">
             <InputCtrls {...theming.inputProps} />
           </Ctrl>
         </Controls>

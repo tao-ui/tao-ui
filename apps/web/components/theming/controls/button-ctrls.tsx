@@ -5,6 +5,7 @@ import { type ThemeSettings } from "~/data/settings";
 interface ButtonCtrlsProps {
   backgroundColor: ThemeSettings["colorVars"];
   borderColor: ThemeSettings["borderColor"];
+  borderRadius: ThemeSettings["borderRadius"];
   borderWidth: ThemeSettings["borderWidth"];
   boxShadow: ThemeSettings["boxShadow"];
   fontSize: ThemeSettings["fontSize"];
@@ -17,6 +18,7 @@ interface ButtonCtrlsProps {
 
 export const ButtonCtrls: FC<ButtonCtrlsProps> = ({
   backgroundColor,
+  borderRadius,
   borderColor,
   borderWidth,
   boxShadow,
@@ -34,12 +36,24 @@ export const ButtonCtrls: FC<ButtonCtrlsProps> = ({
     updateButtonOpts(newColor, "backgroundColor");
   };
   return (
-    <div>
-      <Input
-        value={backgroundColor["btn-primary"].DEFAULT}
-        onChange={(e) => handleBackgroundColorChange(e, "backgroundColor")}
-        id="btn-ctrl-filler"
-      />
-    </div>
+    // TODO: extract into UI components
+    <>
+      <div className="flex flex-col">
+        <label htmlFor="btn-ctrl-filler">Border Radius PH</label>
+        <Input
+          value={backgroundColor["btn-primary"].DEFAULT}
+          onChange={(e) => handleBackgroundColorChange(e, "borderRadius")}
+          id="btn-ctrl-filler"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="btn-ctrl-filler">Border Width PH</label>
+        <Input
+          value={backgroundColor["btn-primary"].DEFAULT}
+          onChange={(e) => handleBackgroundColorChange(e, "borderWidth")}
+          id="btn-ctrl-filler"
+        />
+      </div>
+    </>
   );
 };
