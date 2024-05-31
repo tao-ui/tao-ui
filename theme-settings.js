@@ -479,7 +479,8 @@ const SETTINGS_OPTS = {
   borderColor: {
     "btn-primary-ghost": "var(--border-btn-primary-ghost)",
     "btn-secondary-ghost": "var(--border-btn-secondary-ghost)",
-    chip: "var(--border-chip-primary)",
+    surface: "var(--border-surface)",
+    raised: "var(--border-raised)",
   },
   borderRadius: {
     btn: "var(--rounded-btn)",
