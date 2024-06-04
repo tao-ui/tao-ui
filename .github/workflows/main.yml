@@ -1,0 +1,13 @@
+name: Restrict Merge
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if source branch is not dev
+        run: exit $(if [ "${{ github.head_ref }}" = "dev" ]; then echo 0; else echo 1; fi)
