@@ -17,7 +17,7 @@ const InputVariants = cva(InputWrapperBase, {
       custom: "",
     },
     size: {
-      default: "p-input",
+      default: "p-input h-input",
       sm: "p-input-sm",
       custom: "",
     },

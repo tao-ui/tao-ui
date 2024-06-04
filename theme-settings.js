@@ -226,6 +226,7 @@ const INIT_SETTINGS = {
     "btn-lg": "3.375rem",
     "btn-sm": "2.125rem",
     btn: "2.625rem",
+    input: "3rem",
     chip: "1.75rem",
     checkbox: "2.5rem",
   },
@@ -234,7 +235,7 @@ const INIT_SETTINGS = {
     "btn-sm": ".5rem 1rem",
     btn: ".5rem 1.25rem",
     chip: ".5rem .625rem",
-    input: ".875rem 1.375rem",
+    input: ".5rem 1.375rem",
   },
   spacing: {
     btn: ".5rem",
@@ -507,6 +508,7 @@ const SETTINGS_OPTS = {
     "btn-sm": "var(--height-btn-sm)",
     btn: "var(--height-btn)",
     chip: "var(--height-chip)",
+    input: "var(--height-input)",
   },
   width: {
     "btn-icon": "var(--width-btn-icon)",
