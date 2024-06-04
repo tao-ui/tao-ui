@@ -27,7 +27,8 @@
     "typecheck": "turbo typecheck"
   },
   "dependencies": {
-    "radix-ui": "^1.0.1"
+    "radix-ui": "^1.0.1",
+    "vaul": "^0.9.1"
   },
   "devDependencies": {
     "@types/bun": "latest",
