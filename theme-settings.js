@@ -104,7 +104,7 @@ const INIT_SETTINGS = {
       DEFAULT: "255, 255, 255",
     },
     page: {
-      DEFAULT: "237, 237, 237",
+      DEFAULT: "237, 237, 237, .5",
       foreground: "15, 15, 16",
       hint: "163, 161, 165",
     },
