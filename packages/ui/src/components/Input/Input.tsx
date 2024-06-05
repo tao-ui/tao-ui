@@ -3,8 +3,7 @@ import { clsx } from "clsx";
 import { InputHTMLAttributes } from "react";
 import * as React from "react";
 
-const InputWrapperBase =
-  "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input page-foreground text-input bg-raised";
+const InputWrapperBase = "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input";
 
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
@@ -13,7 +12,7 @@ const IconBase = "w-input-icon mr-input";
 const InputVariants = cva(InputWrapperBase, {
   variants: {
     color: {
-      default: "border-surface placeholder-surface-hint",
+      default: "border-input-border placeholder-input-hint bg-input input-foreground",
       custom: "",
     },
     size: {

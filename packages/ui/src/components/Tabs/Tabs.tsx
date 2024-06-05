@@ -12,10 +12,7 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={clsx(
-      "bg-muted text-muted-foreground inline-flex h-10 items-center justify-center rounded-md p-1",
-      className,
-    )}
+    className={clsx("justify-left flex h-tab items-center gap-tab", className)}
     {...props}
   />
 ));
@@ -28,7 +25,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={clsx(
-      "ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-page data-[state=active]:text-page-foreground data-[state=active]:shadow-sm",
+      "ring-offset-background focus-visible:ring-ring data-[state=active]:text-surface-foreground inline-flex items-center justify-center whitespace-nowrap rounded-tab bg-raised p-tab focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-surface data-[state=active]:shadow-el",
       className,
     )}
     {...props}
