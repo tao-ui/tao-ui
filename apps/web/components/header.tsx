@@ -15,7 +15,7 @@ export const Header: FC = () => {
           <Image width={107} height={28} alt="Tao UI Logo" src="/logo.png" />
         </Link>
         <nav className="flex size-full items-center justify-start gap-6 rounded-full border-input px-6 uppercase">
-          <Link href="/docs">Docs</Link>
+          <Link href="#">Docs</Link>
           <Link href="/theming">Theming</Link>
           <Link href="/sponsor">Sponsor</Link>
         </nav>
