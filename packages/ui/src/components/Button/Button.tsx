@@ -28,13 +28,12 @@ const ButtonVariants = cva(ButtonBase, {
     {
       color: ["default"],
       variant: ["default"],
-      class: "bg-btn-primary hover:bg-btn-primary-hover text-btn-primary-foreground border-transparent",
+      class: "bg-btn-primary hover:bg-btn-primary/80 text-btn-primary-foreground border-transparent",
     },
     {
       color: ["default"],
       variant: ["ghost"],
-      class:
-        "bg-btn-primary-ghost hover:bg-btn-primary-ghost-hover text-btn-primary-ghost-foreground border-btn-primary-ghost",
+      class: "bg-btn-primary-ghost/30 hover:bg-btn-primary-ghost/10 text-btn-primary-ghost border-btn-primary-ghost",
     },
     {
       color: ["default"],
@@ -44,13 +43,13 @@ const ButtonVariants = cva(ButtonBase, {
     {
       color: ["secondary"],
       variant: ["default"],
-      class: "bg-btn-secondary hover:bg-btn-secondary-hover text-btn-secondary-foreground border-transparent",
+      class: "bg-btn-secondary hover:bg-btn-secondary/80 text-btn-secondary-foreground border-transparent",
     },
     {
       color: ["secondary"],
       variant: ["ghost"],
       class:
-        "bg-btn-secondary-ghost hover:bg-btn-secondary-ghost-hover text-btn-secondary-ghost-foreground border-btn-secondary-ghost",
+        "bg-btn-secondary-ghost/30 hover:bg-btn-secondary-ghost/10 text-btn-secondary-ghost border-btn-secondary-ghost",
     },
     {
       color: ["secondary"],

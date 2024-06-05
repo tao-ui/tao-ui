@@ -1,3 +1,5 @@
+import { check } from "prettier";
+
 const INIT_SETTINGS = {
   colorScales: {
     primary: {
@@ -42,7 +44,7 @@ const INIT_SETTINGS = {
       key: "tertiary",
       title: "Tertiary",
       defaultRgb: "207 147 193",
-      foreground: "15 15 16",
+      foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-tertiary-50", rgb: "250 245 249" },
         { key: "100", c: "bg-tertiary-100", rgb: "246 237 244" },
@@ -61,7 +63,7 @@ const INIT_SETTINGS = {
       key: "accent",
       title: "Accent",
       defaultRgb: "243 118 91",
-      foreground: "15 15 16",
+      foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
         { key: "100", c: "bg-accent-100", rgb: "253 ,232, 227" },
@@ -105,68 +107,69 @@ const INIT_SETTINGS = {
     },
     page: {
       DEFAULT: "247 247 247",
-      foreground: "15 15 16",
-      hint: "163 161 165",
+      foreground: "var(--color-black)",
     },
     surface: {
-      DEFAULT: "237 237 237",
-      foreground: "15 15 16",
-      hint: "163 161 165",
+      DEFAULT: "var(--color-white)",
+      foreground: "var(--color-black)",
     },
     raised: {
-      DEFAULT: "229 228 229",
-      foreground: "15 15 16",
-      hint: "123 121 127",
+      DEFAULT: "var(--color-neutral-cool-50)",
+      foreground: "var(--color-black)",
+    },
+    input: {
+      DEFAULT: "var(--color-page)",
+      foreground: "var(--color-black)",
+      hint: "var(--color-neutral-cool)",
+    },
+    tabs: {
+      DEFAULT: "var(--color-raised)",
+      active: "var(--color-surface)",
+      content: "var(--color-surface)",
     },
     "btn-primary": {
-      DEFAULT: "15 15 16",
-      foreground: "255 255 255",
-      hover: "22 19 20, .6",
+      DEFAULT: "var(--color-black)",
+      foreground: "var(--color-white)",
+      hover: "var(--color-black)",
     },
     "btn-primary-ghost": {
-      DEFAULT: "22 19 20, .3",
-      hover: "22 19 20, .05",
-      foreground: "15 15 16",
+      DEFAULT: "var(--color-black)",
     },
     "btn-secondary": {
-      DEFAULT: "57 68 156",
-      foreground: "255 255 255",
-      hover: "57 68 156, 0.6",
+      DEFAULT: "var(--color-primary)",
+      foreground: "var(--color-white)",
+      hover: "var(--color-primary)",
     },
     "btn-secondary-ghost": {
-      DEFAULT: "57 68 156, .3",
-      foreground: "57 68 156",
-      hover: "57 68 156, .05",
+      DEFAULT: "var(--color-primary)",
     },
     "chip-primary": {
-      DEFAULT: "217 217 217",
-      foreground: "22 19 20",
-      hover: "217 217 217, .6",
+      DEFAULT: "var(--color-surface)",
+      foreground: "var(--color-black)",
     },
     checkbox: {
       DEFAULT: "202 201 204",
+      border: "var(--color-neutral-cool-600)",
     },
   },
   borderColor: {
-    "btn-primary-ghost": "22 19 20",
-    "btn-secondary-ghost": "57 68 156",
-    checkbox: "163 161 165",
-    chip: "111 109 114",
-    raised: "202 201 204",
-    surface: "217 217 217",
+    raised: "var(--color-neutral-cool-100)",
+    surface: "var(--color-raised)",
+    "input-border": "var(--color-neutral-cool-300)",
   },
   borderRadius: {
     btn: "9999px",
     color: "9999px",
     input: "9999px",
+    tab: "9999px 9999px 0 0",
   },
   borderWidth: {
     btn: "2px",
     input: "2px",
   },
   boxShadow: {
-    area: "0 2px 4px 0 22 19 20 / 0.1;",
-    el: "0 1px 2px 0 22 19 20 / 0.1;",
+    area: "0 2px 4px 0 var(--color-black)) / 0.1;",
+    el: "0 1px 2px 0 var(--color-black)) / 0.1;",
   },
   fontFamily: {
     sans: [
@@ -243,6 +246,7 @@ const INIT_SETTINGS = {
     btn: ".5rem",
     chip: "0rem",
     input: ".875rem",
+    tabs: "0rem",
   },
   width: {
     "btn-icon": "2.25rem",
@@ -443,15 +447,15 @@ const SETTINGS_OPTS = {
     page: {
       DEFAULT: "rgb(var(--color-page) / <alpha-value>)",
       foreground: "rgb(var(--color-page-foreground) / <alpha-value>)",
-      hint: "rgb(var(--color-page-hint) / <alpha-value>)",
     },
     surface: {
       DEFAULT: "rgb(var(--color-surface) / <alpha-value>)",
-      hint: "rgb(var(--color-surface-hint) / <alpha-value>)",
     },
     raised: {
       DEFAULT: "rgb(var(--color-raised) / <alpha-value>)",
-      hint: "rgb(var(--color-raised-hint) / <alpha-value>)",
+    },
+    input: {
+      DEFAULT: "rgb(var(--color-input) / <alpha-value>)",
     },
     tab: {
       DEFAULT: "rgb(var(--color-tab) / <alpha-value>)",
@@ -485,10 +489,9 @@ const SETTINGS_OPTS = {
     },
   },
   borderColor: {
-    "btn-primary-ghost": "rgb(var(--border-btn-primary-ghost))",
-    "btn-secondary-ghost": "rgb(var(--border-btn-secondary-ghost))",
-    surface: "rgb(var(--border-surface))",
-    raised: "rgb(var(--border-raised))",
+    surface: "rgb(var(--border-color-surface))",
+    raised: "rgb(var(--border-color-raised))",
+    "input-border": "rgb(var(--border-input-border))",
   },
   borderRadius: {
     btn: "var(--rounded-btn)",
