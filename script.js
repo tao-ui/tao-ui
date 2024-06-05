@@ -7,8 +7,8 @@ export function colorScalesToCSS(colorScales) {
   for (const key in colorScales) {
     const colorScale = colorScales[key];
     cssVars += `  /* ${colorScale.title} */\n`;
-    cssVars += `  --color-${colorScale.key}: rgb(${colorScale.defaultRgb});\n`;
-    cssVars += `  --color-${colorScale.key}-foreground: rgb(${colorScale.foreground});\n`;
+    cssVars += `  --color-${colorScale.key}: ${colorScale.defaultRgb};\n`;
+    cssVars += `  --color-${colorScale.key}-foreground: ${colorScale.foreground};\n`;
     cssVars += stopsToCSS(colorScale.stops, colorScale.key, colorScale.defaultRgb);
   }
   return cssVars;
@@ -18,18 +18,18 @@ export function colorVarsToCSS(colorVars) {
   let cssVars = "";
   for (const key in colorVars) {
     const colorVar = colorVars[key];
-    cssVars += `  --color-${key}: rgb(${colorVar.DEFAULT});\n`;
-    if (colorVar.foreground) cssVars += `  --color-${key}-foreground: rgb(${colorVar.foreground});\n`;
-    if (colorVar.hint) cssVars += `  --color-${key}-hint: rgb(${colorVar.hint});\n`;
-    if (colorVar.hover) cssVars += `  --color-${key}-hover: rgb(${colorVar.hover});\n`;
+    // cssVars += `  --color-${key}: rgb(${colorVar.DEFAULT});\n`;
+    if (colorVar.foreground) cssVars += `  --color-${key}-foreground: ${colorVar.foreground};\n`;
+    if (colorVar.hint) cssVars += `  --color-${key}-hint: ${colorVar.hint};\n`;
+    if (colorVar.hover) cssVars += `  --color-${key}-hover: ${colorVar.hover};\n`;
   }
   return cssVars;
 }
 
 export function stopsToCSS(stops, colorKey, defaultRgb) {
-  let cssVars = `  --color-${colorKey}: rgb(${defaultRgb});\n`;
+  let cssVars = "";
   stops.forEach((stop, i) => {
-    cssVars += `  --color-${colorKey}-${stop.key}: rgb(${stop.rgb});\n`;
+    cssVars += `  --color-${colorKey}-${stop.key}: ${stop.rgb};\n`;
   });
   return cssVars;
 }
@@ -38,7 +38,7 @@ export function generalVarsToCSS(key, vars, useRgb = false) {
   let cssVars = "";
   for (const varKey in vars) {
     if (useRgb) {
-      cssVars += `  --${key}-${varKey}: rgb(${vars[varKey]});\n`;
+      cssVars += `  --${key}-${varKey}: ${vars[varKey]};\n`;
     } else {
       cssVars += `  --${key}-${varKey}: ${vars[varKey]};\n`;
     }
