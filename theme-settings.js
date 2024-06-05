@@ -122,10 +122,11 @@ const INIT_SETTINGS = {
       foreground: "var(--color-black)",
       hint: "var(--color-neutral-cool)",
     },
-    tabs: {
+    tab: {
       DEFAULT: "var(--color-raised)",
       active: "var(--color-surface)",
       content: "var(--color-surface)",
+      foreground: "var(--color-black)",
     },
     "btn-primary": {
       DEFAULT: "var(--color-black)",
@@ -161,7 +162,7 @@ const INIT_SETTINGS = {
     btn: "9999px",
     color: "9999px",
     input: "9999px",
-    tab: "9999px 9999px 0 0",
+    tab: "8px 8px 0 0",
   },
   borderWidth: {
     btn: "2px",
@@ -246,7 +247,7 @@ const INIT_SETTINGS = {
     btn: ".5rem",
     chip: "0rem",
     input: ".875rem",
-    tabs: "0rem",
+    tab: ".25rem",
   },
   width: {
     "btn-icon": "2.25rem",
@@ -461,6 +462,7 @@ const SETTINGS_OPTS = {
       DEFAULT: "rgb(var(--color-tab) / <alpha-value>)",
       active: "rgb(var(--color-tab-active) / <alpha-value>)",
       content: "rgb(var(--color-tab-content) / <alpha-value>)",
+      foreground: "rgb(var(--color-tab-foreground) / <alpha-value>)",
     },
     "btn-primary": {
       DEFAULT: "rgb(var(--color-btn-primary) / <alpha-value>)",
@@ -497,6 +499,7 @@ const SETTINGS_OPTS = {
     btn: "var(--rounded-btn)",
     color: "var(--rounded-color)",
     input: "var(--rounded-input)",
+    tab: "var(--rounded-tab)",
   },
   borderWidth: {
     btn: "var(--border-btn)",
@@ -538,6 +541,7 @@ const SETTINGS_OPTS = {
     btn: "var(--spacing-btn)",
     chip: "var(--spacing-chip)",
     input: "var(--spacing-input)",
+    tab: "var(--spacing-tab)",
   },
   fontFamily: {
     sans: "var(--font-sans)",

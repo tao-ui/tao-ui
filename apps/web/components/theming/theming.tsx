@@ -1,15 +1,5 @@
 import React, { use } from "react";
-import {
-  Button,
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerTrigger,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "tao-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 // import { ColorScales } from "./color-scales";
 import { ButtonCtrls, Controls, InputCtrls } from "./controls";
@@ -41,7 +31,8 @@ export const Theming = () => {
       </section>
       <div className="ml-4 flex-1 bg-page p-2">
         <Controls>
-          <Drawer>
+          <p>Content</p>
+          {/* <Drawer>
             <DrawerTrigger asChild>
               <Button>Open Drawer</Button>
             </DrawerTrigger>
@@ -58,7 +49,7 @@ export const Theming = () => {
                 </Ctrl>
               </div>
             </DrawerContent>
-          </Drawer>
+          </Drawer> */}
         </Controls>
       </div>
     </main>
