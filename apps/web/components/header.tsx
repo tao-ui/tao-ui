@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { FC } from "react";
-import { RxMagnifyingGlass } from "react-icons/rx";
+import { RxDiscordLogo, RxGithubLogo, RxMagnifyingGlass } from "react-icons/rx";
 import { Input } from "tao-react";
 import { Banner } from "~/components/banner";
 
@@ -11,13 +11,22 @@ export const Header: FC = () => {
       <Banner />
 
       <section className="container mx-auto flex h-input max-w-screen-xl items-center justify-between gap-x-6 gap-y-2">
-        <Link href="/" className="flex h-full items-center rounded-full bg-tertiary px-6">
+        <Link
+          href="/"
+          className="flex h-full items-center rounded-full border-input border-secondary-600 bg-tertiary px-6"
+        >
           <Image width={107} height={28} alt="Tao UI Logo" src="/logo.png" />
         </Link>
-        <nav className="flex size-full items-center justify-start gap-6 rounded-full border-input px-6 uppercase">
+        <nav className="flex size-full items-center justify-start gap-6 rounded-full border-input border-input-border bg-surface px-6 uppercase">
           <Link href="#">Docs</Link>
           <Link href="/theming">Theming</Link>
           <Link href="/sponsor">Sponsor</Link>
+          <Link href="https://github.com/tao-ui/tao-ui">
+            <RxGithubLogo size={24} />
+          </Link>
+          <Link href="#">
+            <RxDiscordLogo size={24} />
+          </Link>
         </nav>
         {/* TODO: Comp: Search Component */}
         <search>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RxMagnifyingGlass } from "react-icons/rx"; // Assuming you're using react-icons
+import { RxMagnifyingGlass } from "react-icons/rx";
 import { Input } from "tao-react";
 
 interface InputSearchProps {
