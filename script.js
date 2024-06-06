@@ -18,10 +18,13 @@ export function colorVarsToCSS(colorVars) {
   let cssVars = "";
   for (const key in colorVars) {
     const colorVar = colorVars[key];
-    cssVars += `  --color-${key}: ${colorVar.DEFAULT};\n`;
-    if (colorVar.foreground) cssVars += `  --color-${key}-foreground: ${colorVar.foreground};\n`;
-    if (colorVar.hint) cssVars += `  --color-${key}-hint: ${colorVar.hint};\n`;
-    if (colorVar.hover) cssVars += `  --color-${key}-hover: ${colorVar.hover};\n`;
+    for (const prop in colorVar) {
+      if (prop === "DEFAULT") {
+        cssVars += `  --color-${key}: ${colorVar[prop]};\n`;
+      } else {
+        cssVars += `  --color-${key}-${prop}: ${colorVar[prop]};\n`;
+      }
+    }
   }
   return cssVars;
 }
