@@ -163,6 +163,8 @@ const INIT_SETTINGS = {
     color: "9999px",
     input: "9999px",
     tab: "8px 8px 0 0",
+    "tab-content": "0 8px 8px 8px",
+    area: "8px",
   },
   borderWidth: {
     btn: "2px",
@@ -500,6 +502,8 @@ const SETTINGS_OPTS = {
     color: "var(--rounded-color)",
     input: "var(--rounded-input)",
     tab: "var(--rounded-tab)",
+    "tab-content": "var(--rounded-tab-content)",
+    area: "var(--rounded-area)",
   },
   borderWidth: {
     btn: "var(--border-btn)",

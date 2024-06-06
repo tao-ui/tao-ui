@@ -43,4 +43,8 @@ export interface ThemeSettings {
 
 const THEME_SETTINGS = INIT_SETTINGS as ThemeSettings;
 
-export { THEME_SETTINGS };
+const RAW_HEX_CODES = {
+  "neutral-cool-gray": "#7B797F",
+};
+
+export { THEME_SETTINGS, RAW_HEX_CODES };

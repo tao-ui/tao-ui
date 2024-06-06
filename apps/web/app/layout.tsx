@@ -48,7 +48,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={`${interFont.variable} font-sans`}>
       <head></head>
-      <body className="bg-white">
+      <body className="bg-page">
         <Header />
         {children}
       </body>
