@@ -15,7 +15,7 @@ export const Header: FC = () => {
           href="/"
           className="flex h-full items-center rounded-full border-input border-secondary-600 bg-tertiary px-4"
         >
-          <Image width={147} height={37} alt="Tao UI Logo" src="/logo.png" />
+          <Image width={147} height={37} alt="Tao UI Logo" src="/tao-logo.svg" />
         </Link>
         <nav className="flex size-full items-center justify-start gap-6 rounded-full border-input border-input-border bg-surface px-6 uppercase">
           <Link href="#">Docs</Link>
