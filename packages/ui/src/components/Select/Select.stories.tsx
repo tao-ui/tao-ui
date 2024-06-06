@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import { RxChevronDown } from "react-icons/rx";
+import { RAW_HEX_CODES } from "~/data/settings";
 import { Select, SelectProps } from "./Select";
 
 export default {
@@ -16,7 +17,7 @@ export default {
   },
   args: {
     id: "select-5",
-    LeadIcon: <RxChevronDown size={18} style={{ strokeWidth: 1, color: "#7B797F" }} />,
+    LeadIcon: <RxChevronDown size={18} style={{ strokeWidth: 1, color: RAW_HEX_CODES["neutral-cool-gray"] }} />,
     children: [
       <option key="Option 1" value="Option 1">
         Option 1

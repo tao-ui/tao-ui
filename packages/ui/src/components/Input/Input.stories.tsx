@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
-import React from "react";
 import { RxChevronDown } from "react-icons/rx";
+import { RAW_HEX_CODES } from "~/data/settings";
 import { Input, InputWrapperCustomBase, type InputProps } from "./Input";
 
 export default {
@@ -31,7 +31,7 @@ export const InputWithList = Template.bind({});
 InputWithList.args = {
   id: "input-2",
   placeholder: "Choose from the list",
-  LeadIcon: <RxChevronDown size={18} style={{ strokeWidth: 1, color: "#7B797F" }} />,
+  LeadIcon: <RxChevronDown size={18} style={{ strokeWidth: 1, color: RAW_HEX_CODES["neutral-cool-gray"] }} />,
   listData: ["Option 1", "Option 3 ", "Option 3"],
   variant: "list",
 };

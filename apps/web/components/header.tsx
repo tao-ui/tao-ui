@@ -4,13 +4,14 @@ import type { FC } from "react";
 import { RxDiscordLogo, RxGithubLogo, RxMagnifyingGlass } from "react-icons/rx";
 import { Input } from "tao-react";
 import { Banner } from "~/components/banner";
+import { RAW_HEX_CODES } from "~/data/settings";
 
 export const Header: FC = () => {
   return (
     <header className="flex flex-col gap-4">
       <Banner />
 
-      <section className="container mx-auto flex h-input max-w-screen-xl items-center justify-between gap-x-6 gap-y-2">
+      <section className="container mx-auto flex h-input max-w-screen-xl items-center justify-between gap-x-6 gap-y-2 px-4">
         <Link
           href="/"
           className="flex h-full items-center rounded-full border-input border-secondary-600 bg-tertiary px-4"
@@ -34,7 +35,9 @@ export const Header: FC = () => {
             id="site-search"
             placeholder="Search"
             className="!bg-white"
-            LeadIcon={<RxMagnifyingGlass size={24} style={{ strokeWidth: 1, color: "#7B797F" }} />}
+            LeadIcon={
+              <RxMagnifyingGlass size={24} style={{ strokeWidth: 1, color: RAW_HEX_CODES["neutral-cool-gray"] }} />
+            }
           />
         </search>
         {/* Comp: Search Component */}
