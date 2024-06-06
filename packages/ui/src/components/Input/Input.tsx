@@ -12,7 +12,7 @@ const IconBase = "w-input-icon mr-input";
 const InputVariants = cva(InputWrapperBase, {
   variants: {
     color: {
-      default: "border-input-border placeholder-input-hint bg-input input-foreground",
+      default: "border-input-color placeholder-input-hint bg-input input-foreground",
       custom: "",
     },
     size: {

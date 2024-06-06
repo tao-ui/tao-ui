@@ -149,30 +149,32 @@ const INIT_SETTINGS = {
       foreground: "var(--color-black)",
     },
     checkbox: {
-      DEFAULT: "202 201 204",
+      DEFAULT: "var(--color-neutral-cool-300)",
       border: "var(--color-neutral-cool-600)",
     },
   },
   borderColor: {
     raised: "var(--color-neutral-cool-100)",
     surface: "var(--color-raised)",
-    "input-border": "var(--color-neutral-cool-300)",
+    "input-color": "var(--color-neutral-cool-300)",
   },
   borderRadius: {
-    btn: "9999px",
-    color: "9999px",
-    input: "9999px",
+    el: "9999px",
+    btn: "var(--rounded-el)",
+    color: "var(--rounded-el)",
+    input: "var(--rounded-el)",
     tab: "8px 8px 0 0",
     "tab-content": "0 8px 8px 8px",
     area: "8px",
   },
   borderWidth: {
-    btn: "2px",
-    input: "2px",
+    el: "2px",
+    btn: "var(--border-el)",
+    input: "var(--border-el)",
   },
   boxShadow: {
-    area: "0 2px 4px 0 var(--color-black)) / 0.1;",
-    el: "0 1px 2px 0 var(--color-black)) / 0.1;",
+    area: "0 2px 4px 0 var(--color-black) / 0.1;",
+    el: "0 1px 2px 0 var(--color-black) / 0.1;",
   },
   fontFamily: {
     sans: [
@@ -495,9 +497,10 @@ const SETTINGS_OPTS = {
   borderColor: {
     surface: "rgb(var(--border-color-surface))",
     raised: "rgb(var(--border-color-raised))",
-    "input-border": "rgb(var(--border-input-border))",
+    "input-color": "rgb(var(--border-input-color))",
   },
   borderRadius: {
+    el: "var(--rounded-el)",
     btn: "var(--rounded-btn)",
     color: "var(--rounded-color)",
     input: "var(--rounded-input)",
@@ -506,6 +509,7 @@ const SETTINGS_OPTS = {
     area: "var(--rounded-area)",
   },
   borderWidth: {
+    el: "var(--border-el)",
     btn: "var(--border-btn)",
     input: "var(--border-input)",
   },
