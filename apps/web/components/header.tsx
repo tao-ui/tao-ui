@@ -5,16 +5,16 @@ import { RxDiscordLogo, RxGithubLogo, RxMagnifyingGlass } from "react-icons/rx";
 import { Input } from "tao-react";
 import { Banner } from "~/components/banner";
 import { RAW_HEX_CODES } from "~/data/settings";
+import { WrapContainer } from "./ui";
 
 export const Header: FC = () => {
   return (
     <header className="flex flex-col gap-4">
       <Banner />
-
-      <section className="container mx-auto flex h-input max-w-screen-xl items-center justify-between gap-x-6 gap-y-2 px-4">
+      <WrapContainer className="flex h-input items-center justify-between gap-x-6 gap-y-2" as="section">
         <Link
           href="/"
-          className="flex h-full items-center rounded-full border-input border-secondary-600 bg-tertiary px-4"
+          className="flex h-full shrink-0 items-center rounded-full border-input border-secondary-600 bg-tertiary px-4"
         >
           <Image width={147} height={37} alt="Tao UI Logo" src="/tao-logo.svg" />
         </Link>
@@ -41,7 +41,7 @@ export const Header: FC = () => {
           />
         </search>
         {/* Comp: Search Component */}
-      </section>
+      </WrapContainer>
     </header>
   );
 };

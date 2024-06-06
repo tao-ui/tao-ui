@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
+import { WrapContainer } from "../ui";
 // import { ColorScales } from "./color-scales";
 import { ButtonCtrls, Controls, InputCtrls } from "./controls";
 import { Ctrl } from "./controls/ctrl";
@@ -12,13 +13,13 @@ export const Theming = () => {
 
   return (
     <main>
-      <div className="container mx-auto">
-        <header className="pb-16 pt-12">
+      <WrapContainer>
+        <header className="w-full pb-16 pt-12">
           <h1 className="text-5xl font-bold leading-[4.5rem]">Theming</h1>
           <h2 className="text-2xl">Generate colors, CSS Variables and other options for your theme.</h2>
         </header>
         <div className="flex gap-4">
-          <section className="flex-1">
+          <section className="w-full lg:w-1/2 xl:w-3/5">
             <Tabs defaultValue="tab1">
               <TabsList>
                 <TabsTrigger value="tab1"> Theming</TabsTrigger>
@@ -41,13 +42,13 @@ export const Theming = () => {
               </TabsContent>
             </Tabs>
           </section>
-          <div className="flex-1 rounded-area bg-surface/70 p-4">
+          <div className="hidden w-1/2 rounded-area bg-surface/70 p-4 lg:block xl:w-2/5">
             <Controls>
               <p>temp content</p>
             </Controls>
           </div>
         </div>
-      </div>
+      </WrapContainer>
     </main>
   );
 };
