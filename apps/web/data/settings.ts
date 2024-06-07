@@ -11,6 +11,7 @@ interface ColorScale {
   key: string;
   title: string;
   defaultRgb: string;
+  defaultTwClass: string;
   foreground: string;
   stops: ColorScalesStop[];
 }
@@ -29,6 +30,7 @@ interface ColorVar {
 export interface ThemeSettings {
   colorScales: ColorScales;
   colorVars: Record<string, ColorVar>;
+  backgroundColor: Record<string, string>;
   borderColor: Record<string, String>;
   borderRadius: Record<string, string>;
   borderWidth: Record<string, string>;

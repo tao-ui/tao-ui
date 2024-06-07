@@ -1,11 +1,9 @@
-import React, { use } from "react";
+import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 import { WrapContainer } from "../ui";
-// import { ColorScales } from "./color-scales";
-import { ButtonCtrls, Controls, InputCtrls } from "./controls";
-import { Ctrl } from "./controls/ctrl";
-import { Buttons, Inputs } from "./index";
+import { ColorScales } from "./color-scales";
+import { ColorCtrls, Controls } from "./controls";
 import { useTheming } from "./useTheming";
 
 export const Theming = () => {
@@ -22,14 +20,15 @@ export const Theming = () => {
           <section className="w-full lg:w-1/2 xl:w-3/5">
             <Tabs defaultValue="tab1">
               <TabsList>
-                <TabsTrigger value="tab1"> Theming</TabsTrigger>
+                <TabsTrigger value="tab1">Theming</TabsTrigger>
                 <TabsTrigger value="tab2">Code</TabsTrigger>
                 <TabsTrigger value="tab3">UI Mailer</TabsTrigger>
                 <TabsTrigger value="tab4">UI Dashboard</TabsTrigger>
               </TabsList>
               <TabsContent value="tab1" className="!bg-surface/70 p-4">
-                <Buttons {...theming.buttonProps} />
-                <Inputs {...theming.inputProps} />
+                {/* <Buttons {...theming.buttonProps} />
+                <Inputs {...theming.inputProps} /> */}
+                <ColorScales colorScales={theming.themeState.colorScales} />
               </TabsContent>
               <TabsContent className="!bg-surface/70 p-4" value="tab2">
                 Content 2
@@ -44,7 +43,7 @@ export const Theming = () => {
           </section>
           <div className="hidden w-1/2 rounded-area bg-surface/70 p-4 lg:block xl:w-2/5">
             <Controls>
-              <p>temp content</p>
+              <ColorCtrls {...theming.colorProps} />
             </Controls>
           </div>
         </div>

@@ -1,11 +1,10 @@
-import { check } from "prettier";
-
 const INIT_SETTINGS = {
   colorScales: {
     primary: {
       key: "primary",
       title: "Primary",
       defaultRgb: "57 68 156",
+      defaultTwClass: "bg-primary",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-primary-50", rgb: "242 245 252" },
@@ -25,6 +24,7 @@ const INIT_SETTINGS = {
       key: "secondary",
       title: "Secondary",
       defaultRgb: "153 131 189",
+      defaultTwClass: "bg-secondary",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-secondary-50", rgb: "248 247 251" },
@@ -44,6 +44,7 @@ const INIT_SETTINGS = {
       key: "tertiary",
       title: "Tertiary",
       defaultRgb: "207 147 193",
+      defaultTwClass: "bg-tertiary",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-tertiary-50", rgb: "250 245 249" },
@@ -63,6 +64,7 @@ const INIT_SETTINGS = {
       key: "accent",
       title: "Accent",
       defaultRgb: "243 118 91",
+      defaultTwClass: "bg-accent",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
@@ -82,6 +84,7 @@ const INIT_SETTINGS = {
       key: "neutral-cool",
       title: "Neutral Cool",
       defaultRgb: "123 121 127",
+      defaultTwClass: "bg-neutral-cool",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-neutral-cool-50", rgb: "237 237 237" },

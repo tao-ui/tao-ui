@@ -1,6 +1,14 @@
 import { useReducer } from "react";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 
+// Local Helpers, move a level or two up if needed.
+
+const wrapVar = (value: string, type = "") => {
+  if (type === "rgb") return `rgb(var(--${value}))`;
+  return `var(--${value})`;
+};
+
+// Types
 type Action =
   | { type: "SET_COLOR_VARS"; payload: ThemeSettings["colorVars"] }
   | { type: "SET_COLOR_SCALES"; payload: ThemeSettings["colorScales"] }
@@ -28,7 +36,6 @@ const themeReducer = (state: ThemeSettings, action: Action) => {
           ...action.payload,
         },
       };
-
     case "SET_BORDER_COLOR":
       return {
         ...state,
@@ -77,56 +84,47 @@ const themeReducer = (state: ThemeSettings, action: Action) => {
 export const useTheming = () => {
   const [themeState, dispatch] = useReducer(themeReducer, THEME_SETTINGS);
 
-  const buttonProps = {
-    backgroundColor: themeState.colorVars,
-    borderColor: themeState.borderColor,
-    borderRadius: themeState.borderRadius,
-    borderWidth: themeState.borderWidth,
-    boxShadow: themeState.boxShadow,
-    fontSize: themeState.fontSize,
-    height: themeState.height,
-    padding: themeState.padding,
-    spacing: themeState.spacing,
-    width: themeState.width,
+  const colorProps = {
+    colorScales: themeState.colorScales,
+    colorVars: themeState.colorVars,
+    updateTheme: (value: string, type: string, subType: string) => updateTheme(value, type, subType),
   };
 
-  const inputProps = {
-    backgroundColor: themeState.colorVars,
-    borderColor: themeState.borderColor,
-    borderRadius: themeState.borderRadius,
-    borderWidth: themeState.borderWidth,
-    boxShadow: themeState.boxShadow,
-    fontSize: themeState.fontSize,
-    height: themeState.height,
-    padding: themeState.padding,
-    spacing: themeState.spacing,
-    width: themeState.width,
-  };
+  const setColorScales = (subType: string, value: any) => {
+    const subTypes = subType.split(".");
 
-  // TODO: maybe on having these broken into their own functions vs inline.
-  const setColorVars = (payload: any) => dispatch({ type: "SET_COLOR_VARS", payload });
-  const setColorScales = (payload: any) => dispatch({ type: "SET_COLOR_SCALES", payload });
-  const setBorderColor = (payload: any) => dispatch({ type: "SET_BORDER_COLOR", payload });
-  const setBorderWidth = (payload: any) => dispatch({ type: "SET_BORDER_WIDTH", payload });
-  const setBoxShadow = (payload: any) => dispatch({ type: "SET_BOX_SHADOW", payload });
-  const setFontSize = (payload: any) => dispatch({ type: "SET_FONT_SIZE", payload });
-  const setHeight = (payload: any) => dispatch({ type: "SET_HEIGHT", payload });
-  const setPadding = (payload: any) => dispatch({ type: "SET_PADDING", payload });
-  const setSpacing = (payload: any) => dispatch({ type: "SET_SPACING", payload });
-  const setWidth = (payload: any) => dispatch({ type: "SET_WIDTH", payload });
-
-  const updateButtonOpts = (value: string, type: string) => {
-    if (type === "backgroundColor") {
-      setColorVars({ ...themeState, "btn-primary": { DEFAULT: value } });
+    switch (subTypes[1]) {
+      case "defaultRgb":
+        const payload = {
+          [subTypes[0]]: {
+            ...themeState.colorScales[subTypes[0]],
+            defaultRgb: value,
+          },
+        };
+        dispatch({ type: "SET_COLOR_SCALES", payload });
+        break;
     }
   };
-  const updateInputOpts = (value: string, type: string) => {};
+
+  const setBorderColor = (subType: string, value: string) => {
+    const payload = { ...themeState.borderColor, [subType]: wrapVar(value) };
+    dispatch({ type: "SET_BORDER_COLOR", payload });
+  };
+
+  const updateTheme = <T>(value: T, type: string, subType: string) => {
+    switch (type) {
+      case "colorScales":
+        setColorScales(subType, value as string);
+        break;
+      case "borderColor":
+        setBorderColor(subType, value as string);
+        break;
+    }
+  };
 
   return {
     themeState,
-    buttonProps,
-    inputProps,
-    updateButtonOpts,
-    updateInputOpts,
+    colorProps,
+    updateTheme,
   };
 };
