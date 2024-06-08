@@ -27,6 +27,7 @@
     "typecheck": "turbo typecheck"
   },
   "dependencies": {
+    "chroma-js": "^2.4.2",
     "radix-ui": "^1.0.1",
     "vaul": "^0.9.1"
   },
