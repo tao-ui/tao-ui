@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { RxChevronDown } from "react-icons/rx";
-import { RAW_HEX_CODES } from "~/data/settings";
-import { Input, InputWrapperCustomBase, type InputProps } from "./Input";
+import { RAW_HEX_CODES } from "../../../../../apps/web/data/settings";
+import { Input, type InputProps } from "./Input";
 
 export default {
   title: "Components/Input",
@@ -40,7 +40,8 @@ export const CustomInput = Template.bind({});
 CustomInput.args = {
   id: "input-3",
   placeholder: "Custom Input",
-  color: "custom",
-  size: "custom",
-  className: "p-4 bg-primary-100 border-surface placeholder-surface-hint !rounded-sm !border-4",
+
+  bgInput: "bg-red-500",
+  shadow: "shadow-lg",
+  inputSize: "p-8 h-16",
 };

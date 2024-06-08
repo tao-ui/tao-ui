@@ -1,59 +1,54 @@
-import { cva } from "class-variance-authority";
+// import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 import { InputHTMLAttributes } from "react";
 import * as React from "react";
 
-const InputWrapperBase = "inline-flex items-center whitespace-nowrap shadow-el rounded-input border-input";
+const InputWrapperBase = "inline-flex items-center whitespace-nowrap";
 
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
-const IconBase = "w-input-icon mr-input";
-
-const InputVariants = cva(InputWrapperBase, {
-  variants: {
-    color: {
-      default: "border-input-color placeholder-input-hint bg-input input-foreground",
-      custom: "",
-    },
-    size: {
-      default: "p-input h-input",
-      sm: "p-input-sm",
-      custom: "",
-    },
-  },
-  defaultVariants: {
-    color: "default",
-    size: "default",
-  },
-});
-
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  bgInput: string;
+  borderInputColor: string;
   className?: string;
-  color?: "default" | undefined;
+  color: string;
+  describedBy?: string;
   disabled?: boolean;
   error?: string;
+  ErrorIcon?: React.ReactNode;
   errorImgSrc?: string;
-  describedBy?: string;
+  iconBase: string;
   id: string;
+  inputForeground: string;
+  inputSize: string;
   LeadIcon?: React.ReactNode;
   placeholder?: string;
-  ErrorIcon?: React.ReactNode;
+  placeholderInputHint: string;
+  rounded: string;
+  shadow: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      bgInput = "bg-input",
+      borderInputColor = "border-input-color",
       children,
       className,
-      color,
+      describedBy,
       disabled,
       error,
       ErrorIcon,
       errorImgSrc,
-      describedBy,
+      iconBase = "mr-2",
       id,
+      inputForeground = "input-foreground",
+      inputSize = "p-input h-input",
       LeadIcon,
       placeholder,
+      placeholderInputHint = "placeholder-input-hint",
+      rounded = "rounded-input",
+      shadow = "shadow-input",
       ...props
     },
     ref,
@@ -62,8 +57,19 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const errorId = error ? `${id}-error` : undefined;
     const listId = `${id}-list`;
     return (
-      <div className={clsx(InputVariants({ color: color, className }))}>
-        {LeadIcon && <div className={IconBase}>{LeadIcon}</div>}
+      <div
+        className={clsx(
+          InputWrapperBase,
+          borderInputColor,
+          placeholderInputHint,
+          bgInput,
+          inputForeground,
+          shadow,
+          inputSize,
+          rounded,
+        )}
+      >
+        {LeadIcon && <div className={iconBase}>{LeadIcon}</div>}
         <input
           className={InputBase}
           id={id}
@@ -75,7 +81,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           list={listId}
         />
-        {error && ErrorIcon && <div className={IconBase}>{ErrorIcon}</div>}
+        {error && ErrorIcon && <div className={iconBase}>{ErrorIcon}</div>}
       </div>
     );
   },
@@ -83,4 +89,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = "Input";
 
-export { Input, InputBase, InputVariants };
+export { Input, InputBase };
