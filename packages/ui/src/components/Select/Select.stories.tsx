@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import React from "react";
 import { RxChevronDown } from "react-icons/rx";
-import { RAW_HEX_CODES } from "~/data/settings";
+import { RAW_HEX_CODES } from "../../../../../apps/web/data/settings";
 import { Select, SelectProps } from "./Select";
 
 export default {
