@@ -17,7 +17,7 @@ export const ColorCtrls: FC<ButtonCtrlsProps> = ({ colorScales, colorVars, updat
   };
   return (
     // TODO: extract into UI components
-    <>
+    <div className="grid w-full grid-cols-2 gap-4">
       {Object.values(colorScales).map((color) => (
         <div key={color.key} className="flex flex-col">
           <label htmlFor="color-input-value">{color.title} Color</label>
@@ -28,6 +28,6 @@ export const ColorCtrls: FC<ButtonCtrlsProps> = ({ colorScales, colorVars, updat
           />
         </div>
       ))}
-    </>
+    </div>
   );
 };

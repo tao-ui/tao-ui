@@ -14,7 +14,7 @@ export const Theming = () => {
       <WrapContainer>
         <header className="w-full pb-16 pt-12">
           <h1 className="text-5xl font-bold leading-[4.5rem]">Theming</h1>
-          <h2 className="text-2xl">Generate colors, CSS Variables and other options for your theme.</h2>
+          <h2 className="text-2xl italic">Generate colors, CSS Variables and other options for your theme.</h2>
         </header>
         <div className="flex gap-4">
           <section className="w-full lg:w-1/2 xl:w-3/5">
