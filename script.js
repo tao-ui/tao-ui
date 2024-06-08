@@ -74,6 +74,7 @@ function createCSSRoot() {
   cssRoot += "/* Spacing Variables */\n";
   if (INIT_SETTINGS.spacing) cssRoot += generalVarsToCSS("spacing", INIT_SETTINGS.spacing);
   if (INIT_SETTINGS.fontFamily) cssRoot += generalVarsToCSS("font", INIT_SETTINGS.fontFamily);
+  if (INIT_SETTINGS.fontWeight) cssRoot += generalVarsToCSS("font-weight", INIT_SETTINGS.fontWeight);
 
   cssRoot += "}";
   return cssRoot;

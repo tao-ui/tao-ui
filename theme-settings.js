@@ -232,6 +232,9 @@ const INIT_SETTINGS = {
     btn: "1rem",
     input: "1rem",
   },
+  fontWeight: {
+    btn: "700",
+  },
   height: {
     "btn-icon": "2.25rem",
     "btn-lg": "3.375rem",
@@ -525,6 +528,9 @@ const SETTINGS_OPTS = {
     "btn-sm": "var(--font-size-btn-sm)",
     btn: "var(--font-size-btn)",
     input: "var(--font-size-input)",
+  },
+  fontWeight: {
+    btn: "var(--font-weight-btn)",
   },
   height: {
     "btn-icon": "var(--height-btn-icon)",
