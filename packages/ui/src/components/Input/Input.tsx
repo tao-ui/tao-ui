@@ -8,8 +8,9 @@ const InputWrapperBase = "inline-flex items-center whitespace-nowrap";
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  bgInput: string;
-  borderInputColor: string;
+  bg: string;
+  border: string;
+  borderColor: string;
   className?: string;
   color: string;
   describedBy?: string;
@@ -31,8 +32,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      bgInput = "bg-input",
-      borderInputColor = "border-input-color",
+      bg = "bg-input",
+      border = "border-input",
+      borderColor = "border-input-color",
       children,
       className,
       describedBy,
@@ -60,9 +62,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div
         className={clsx(
           InputWrapperBase,
-          borderInputColor,
+          border,
+          borderColor,
           placeholderInputHint,
-          bgInput,
+          bg,
           inputForeground,
           shadow,
           inputSize,
