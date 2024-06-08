@@ -20,7 +20,7 @@ export default {
       control: { type: "inline-radio" },
     },
     variant: {
-      options: ["default", "ghost"],
+      options: ["default", "ghost", "custom"],
       control: { type: "inline-radio" },
     },
   },
@@ -46,6 +46,15 @@ IconButtonDefault.args = {
   color: "default",
   size: "icon",
   variant: "default",
+};
+
+export const CustomButton = Template.bind({});
+CustomButton.storyName = "Custom";
+CustomButton.args = {
+  children: "Button",
+  size: "default",
+  variant: "custom",
+  className: "bg-red-500 text-white border-blue-500 text-blue-800 font-bold",
 };
 
 const IconSvgDefault = <RxPlus size={18} style={{ strokeWidth: 1 }} />;

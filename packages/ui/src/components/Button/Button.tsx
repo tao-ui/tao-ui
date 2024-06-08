@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 import * as React from "react";
 
-const ButtonBase = "inline-flex items-center justify-center whitespace-nowrap shadow-el rounded-btn border-btn";
+const ButtonBase = "inline-flex items-center justify-center whitespace-nowrap ";
 
 const ButtonVariants = cva(ButtonBase, {
   variants: {
@@ -15,7 +15,7 @@ const ButtonVariants = cva(ButtonBase, {
     variant: {
       default: "",
       ghost: "",
-      outline: "",
+      custom: "",
     },
     size: {
       default: "p-btn h-btn text-btn",
@@ -33,13 +33,9 @@ const ButtonVariants = cva(ButtonBase, {
     {
       color: ["default"],
       variant: ["ghost"],
-      class: "bg-btn-primary-ghost/30 hover:bg-btn-primary-ghost/10 text-btn-primary-ghost border-btn-primary-ghost",
+      class: "bg-btn-primary-ghost/20 hover:bg-btn-primary-ghost/10 text-btn-primary-ghost border-btn-primary-ghost",
     },
-    {
-      color: ["default"],
-      variant: ["outline"],
-      class: "text-btn-primary",
-    },
+
     {
       color: ["secondary"],
       variant: ["default"],
@@ -49,12 +45,7 @@ const ButtonVariants = cva(ButtonBase, {
       color: ["secondary"],
       variant: ["ghost"],
       class:
-        "bg-btn-secondary-ghost/30 hover:bg-btn-secondary-ghost/10 text-btn-secondary-ghost border-btn-secondary-ghost",
-    },
-    {
-      color: ["secondary"],
-      variant: ["outline"],
-      class: "text-btn-secondary",
+        "bg-btn-secondary-ghost/20 hover:bg-btn-secondary-ghost/10 text-btn-secondary-ghost border-btn-secondary-ghost",
     },
   ],
   defaultVariants: {
@@ -66,15 +57,39 @@ const ButtonVariants = cva(ButtonBase, {
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
-  variant?: "default" | "ghost" | "outline";
-  size?: "default" | "sm" | "lg";
-  color?: "default" | "secondary" | "tertiary";
+  border: string;
   className?: string;
+  color?: "default" | "secondary" | "tertiary";
+  fontWeight: string;
+  rounded: string;
+  shadow: string;
+  size?: "default" | "sm" | "lg";
+  variant?: "default" | "ghost" | "custom";
 }
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, color, asChild, ...props }, ref) => {
+  (
+    {
+      asChild,
+      border = "border-btn",
+      className,
+      color,
+      fontWeight = "font-weight-btn",
+      rounded = "rounded-btn",
+      shadow = "shadow-btn",
+      size,
+      variant,
+      ...props
+    },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={clsx(ButtonVariants({ variant, size, color, className }))} ref={ref} {...props} />;
+    return (
+      <Comp
+        className={clsx(ButtonVariants({ variant, size, color, className }), border, fontWeight, rounded, shadow)}
+        ref={ref}
+        {...props}
+      />
+    );
   },
 );
 
