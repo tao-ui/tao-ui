@@ -228,6 +228,7 @@ const INIT_SETTINGS = {
     "btn-sm": "1rem",
     btn: "1rem",
     input: "1rem",
+    label: "1rem",
   },
   fontWeight: {
     btn: "700",
@@ -525,6 +526,7 @@ const SETTINGS_OPTS = {
     "btn-sm": "var(--font-size-btn-sm)",
     btn: "var(--font-size-btn)",
     input: "var(--font-size-input)",
+    label: "var(--font-size-label)",
   },
   fontWeight: {
     btn: "var(--font-weight-btn)",
