@@ -105,6 +105,26 @@ const INIT_SETTINGS = {
     white: {
       DEFAULT: "255 255 255",
     },
+    success: {
+      DEFAULT: "98 186 54",
+    },
+    error: {
+      DEFAULT: "210 30 30",
+    },
+    warning: {
+      DEFAULT: "233 169 58",
+    },
+    destructive: {
+      DEFAULT: "var(--color-error)",
+    },
+    confirm: {
+      DEFAULT: "var(--color-success)",
+    },
+    muted: {
+      DEFAULT: "var(-neutral-cool-500)",
+      high: "var(--neutral-cool-800)",
+      low: "var(--neutral-cool-200)",
+    },
     page: {
       DEFAULT: "247 247 247",
       foreground: "var(--color-black)",
@@ -120,7 +140,7 @@ const INIT_SETTINGS = {
     input: {
       DEFAULT: "var(--color-page)",
       foreground: "var(--color-black)",
-      hint: "var(--color-neutral-cool)",
+      hint: "var(--color-muted)",
     },
     tab: {
       DEFAULT: "var(--color-raised)",
@@ -229,6 +249,7 @@ const INIT_SETTINGS = {
     btn: "1rem",
     input: "1rem",
     label: "1rem",
+    aside: ".875rem",
   },
   fontWeight: {
     btn: "700",
@@ -256,6 +277,8 @@ const INIT_SETTINGS = {
     chip: "0rem",
     input: ".875rem",
     tab: ".25rem",
+    "form-item": ".25rem",
+    label: ".5rem",
   },
   width: {
     "btn-icon": "2.25rem",
@@ -463,6 +486,9 @@ const SETTINGS_OPTS = {
     raised: {
       DEFAULT: "rgb(var(--color-raised) / <alpha-value>)",
     },
+    destructive: {
+      DEFAULT: "rgb(var(--color-destructive) / <alpha-value>)",
+    },
     input: {
       DEFAULT: "rgb(var(--color-input) / <alpha-value>)",
     },
@@ -527,6 +553,7 @@ const SETTINGS_OPTS = {
     btn: "var(--font-size-btn)",
     input: "var(--font-size-input)",
     label: "var(--font-size-label)",
+    aside: "var(--font-size-aside)",
   },
   fontWeight: {
     btn: "var(--font-weight-btn)",
@@ -558,6 +585,8 @@ const SETTINGS_OPTS = {
     chip: "var(--spacing-chip)",
     input: "var(--spacing-input)",
     tab: "var(--spacing-tab)",
+    "form-item": "var(--spacing-form-item)",
+    label: "var(--spacing-label)",
   },
   fontFamily: {
     sans: "var(--font-sans)",
