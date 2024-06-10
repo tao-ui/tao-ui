@@ -8,25 +8,25 @@ const InputWrapperBase = "inline-flex items-center whitespace-nowrap";
 const InputBase = "w-full bg-transparent appearance-none outline-none";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  bg: string;
-  border: string;
-  borderColor: string;
+  bg?: string;
+  border?: string;
+  borderColor?: string;
   className?: string;
-  color: string;
+  color?: string;
   describedBy?: string;
   disabled?: boolean;
   error?: string;
   ErrorIcon?: React.ReactNode;
   errorImgSrc?: string;
-  iconBase: string;
+  iconBase?: string;
   id: string;
-  inputForeground: string;
-  inputSize: string;
+  inputForeground?: string;
+  inputSize?: string;
   LeadIcon?: React.ReactNode;
   placeholder?: string;
-  placeholderInputHint: string;
-  rounded: string;
-  shadow: string;
+  placeholderColor?: string;
+  rounded?: string;
+  shadow?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -48,7 +48,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       inputSize = "p-input h-input",
       LeadIcon,
       placeholder,
-      placeholderInputHint = "placeholder-input-hint",
+      placeholderColor = "placeholder-input-hint",
       rounded = "rounded-input",
       shadow = "shadow-input",
       ...props
@@ -64,7 +64,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           InputWrapperBase,
           border,
           borderColor,
-          placeholderInputHint,
+          placeholderColor,
           bg,
           inputForeground,
           shadow,
