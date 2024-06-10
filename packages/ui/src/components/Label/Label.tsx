@@ -9,13 +9,14 @@ const labelVariants = cva("text-label peer-disabled:cursor-not-allowed peer-disa
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   textSize?: string;
+  marginLeft?: string;
 }
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants> & LabelProps
->(({ className, textSize = "text-label", ...props }, ref) => (
-  <LabelPrimitive.Root ref={ref} className={clsx(labelVariants(), className, textSize)} {...props} />
+>(({ className, textSize = "text-label", marginLeft = "ml-label", ...props }, ref) => (
+  <LabelPrimitive.Root ref={ref} className={clsx(labelVariants(), className, textSize, marginLeft)} {...props} />
 ));
 Label.displayName = LabelPrimitive.Root.displayName;
 
