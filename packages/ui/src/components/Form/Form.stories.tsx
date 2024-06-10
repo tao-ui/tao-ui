@@ -11,11 +11,11 @@ export default {
   component: Input,
 };
 
-const rgbRegex = /^(\d{1,3})(?:, ?|,| )(\d{1,3})(?:, ?|,| )(\d{1,3})$/;
+// Define the Zod schema
+const rgbRegex = /^(\d{1,3})(?:, ?| ?)(\d{1,3})(?:, ?| ?)(\d{1,3})$/;
 
 const isValidRGB = (value: string) => {
-  const trimmedValue = value.trim();
-  const match = trimmedValue.match(rgbRegex);
+  const match = value.match(rgbRegex);
   if (!match) return false;
   return match.slice(1, 4).every((num) => Number(num) >= 0 && Number(num) <= 255);
 };
@@ -31,7 +31,6 @@ type FormData = z.infer<typeof formSchema>;
 const Template: React.FC = () => {
   const methods = useForm({
     resolver: zodResolver(formSchema),
-    mode: "onBlur",
     defaultValues: {
       rgb: "",
       email: "",
@@ -50,6 +49,7 @@ const Template: React.FC = () => {
   });
 
   const onSubmit = (data: FormData) => {
+    console.log("wtf");
     setFormData(data);
   };
 
