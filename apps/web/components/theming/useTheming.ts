@@ -1,4 +1,7 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useReducer } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 
 // Local Helpers, move a level or two up if needed.
@@ -20,6 +23,26 @@ type Action =
   | { type: "SET_PADDING"; payload: ThemeSettings["padding"] }
   | { type: "SET_SPACING"; payload: ThemeSettings["spacing"] }
   | { type: "SET_WIDTH"; payload: ThemeSettings["width"] };
+
+const rgbRegex = /^(\d{1,3})(?:, ?|,| )(\d{1,3})(?:, ?|,| )(\d{1,3})$/;
+
+const isValidRGB = (value: string) => {
+  const trimmedValue = value.trim();
+  const match = trimmedValue.match(rgbRegex);
+  if (!match) return false;
+  return match.slice(1, 4).every((num) => Number(num) >= 0 && Number(num) <= 255);
+};
+
+const rgbValidation = z.string().refine(isValidRGB, {
+  message: "RGB must be in the format 255, 255, 255 or similar and each number between 0 and 255.",
+});
+
+const formSchema = z.object({
+  primaryRgb: rgbValidation,
+  secondaryRgb: rgbValidation,
+  tertiaryRgb: rgbValidation,
+});
+export type FormData = z.infer<typeof formSchema>;
 
 const themeReducer = (state: ThemeSettings, action: Action) => {
   switch (action.type) {
@@ -84,13 +107,17 @@ const themeReducer = (state: ThemeSettings, action: Action) => {
 export const useTheming = () => {
   const [themeState, dispatch] = useReducer(themeReducer, THEME_SETTINGS);
 
-  const colorProps = {
-    colorScales: themeState.colorScales,
-    colorVars: themeState.colorVars,
-    updateTheme: (value: string, type: string, subType: string) => updateTheme(value, type, subType),
-  };
+  const colorMethods = useForm({
+    resolver: zodResolver(formSchema),
+    mode: "onSubmit",
+    defaultValues: {
+      primaryRgb: themeState.colorScales.primary.defaultRgb,
+      secondaryRgb: themeState.colorScales.secondary.defaultRgb,
+      tertiaryRgb: themeState.colorScales.tertiary.defaultRgb,
+    },
+  });
 
-  const setColorScales = (subType: string, value: any) => {
+  const setColorScales = (subType: string, value: string) => {
     const subTypes = subType.split(".");
 
     switch (subTypes[1]) {
@@ -124,7 +151,7 @@ export const useTheming = () => {
 
   return {
     themeState,
-    colorProps,
     updateTheme,
+    colorMethods,
   };
 };
