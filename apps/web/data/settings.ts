@@ -10,8 +10,9 @@ interface ColorScalesStop {
 interface ColorScale {
   key: string;
   title: string;
-  defaultRgb: string;
-  defaultTwClass: string;
+  rgb: string;
+  hex: string;
+  c: string;
   foreground: string;
   stops: ColorScalesStop[];
 }
@@ -28,6 +29,7 @@ interface ColorVar {
 }
 
 export interface ThemeSettings {
+  colorMode: "rgb" | "hex";
   colorScales: ColorScales;
   colorVars: Record<string, ColorVar>;
   backgroundColor: Record<string, string>;

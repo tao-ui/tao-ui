@@ -38,9 +38,19 @@ const rgbValidation = z.string().refine(isValidRGB, {
 });
 
 const formSchema = z.object({
-  primaryRgb: rgbValidation,
-  secondaryRgb: rgbValidation,
-  tertiaryRgb: rgbValidation,
+  type: z.string(),
+  position: z.string(),
+  50: rgbValidation,
+  100: rgbValidation,
+  200: rgbValidation,
+  300: rgbValidation,
+  400: rgbValidation,
+  500: rgbValidation,
+  600: rgbValidation,
+  700: rgbValidation,
+  800: rgbValidation,
+  900: rgbValidation,
+  950: rgbValidation,
 });
 export type FormData = z.infer<typeof formSchema>;
 
@@ -107,25 +117,50 @@ const themeReducer = (state: ThemeSettings, action: Action) => {
 export const useTheming = () => {
   const [themeState, dispatch] = useReducer(themeReducer, THEME_SETTINGS);
 
-  const colorMethods = useForm({
+  const colorMode = themeState.colorMode;
+
+  const colorRgbMethods = useForm({
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
     defaultValues: {
-      primaryRgb: themeState.colorScales.primary.defaultRgb,
-      secondaryRgb: themeState.colorScales.secondary.defaultRgb,
-      tertiaryRgb: themeState.colorScales.tertiary.defaultRgb,
+      position: "500",
+      type: "",
+      primary: themeState.colorScales.primary.rgb,
+      secondary: themeState.colorScales.secondary.rgb,
+      tertiary: themeState.colorScales.tertiary.rgb,
     },
   });
 
-  const setColorScales = (subType: string, value: string) => {
-    const subTypes = subType.split(".");
+  const colorScales = themeState.colorScales;
 
-    switch (subTypes[1]) {
-      case "defaultRgb":
+  const setColorScales = (subType: string, value: any) => {
+    // const subTypes = subType.split(".");
+
+    switch (subType) {
+      case "default":
+        const stops = [
+          { key: 50, c: `bg-${value.type}-50`, [`${value.type}`]: value["50"] },
+          { key: 100, c: `bg-${value.type}-100`, [`${value.type}`]: value["100"] },
+          { key: 200, c: `bg-${value.type}-200`, [`${value.type}`]: value["200"] },
+          { key: 300, c: `bg-${value.type}-300`, [`${value.type}`]: value["300"] },
+          { key: 400, c: `bg-${value.type}-400`, [`${value.type}`]: value["400"] },
+          { key: 500, c: `bg-${value.type}-500`, [`${value.type}`]: value["500"] },
+          { key: 600, c: `bg-${value.type}-600`, [`${value.type}`]: value["600"] },
+          { key: 700, c: `bg-${value.type}-700`, [`${value.type}`]: value["700"] },
+          { key: 800, c: `bg-${value.type}-800`, [`${value.type}`]: value["800"] },
+          { key: 900, c: `bg-${value.type}-900`, [`${value.type}`]: value["900"] },
+          { key: 950, c: `bg-${value.type}-950`, [`${value.type}`]: value["950"] },
+        ];
+
         const payload = {
-          [subTypes[0]]: {
-            ...themeState.colorScales[subTypes[0]],
-            defaultRgb: value,
+          [`${value.type}`]: {
+            key: value.type,
+            title: value.type,
+            rgb: value.type === "rgb" ? value[value[value.position]] : themeState.colorScales[value.type].rgb,
+            hex: value.type === "hex" ? value[value[value.position]] : themeState.colorScales[value.type].hex,
+            c: `bg-${value.type}`,
+            foreground: value.foreground,
+            stops: stops,
           },
         };
         dispatch({ type: "SET_COLOR_SCALES", payload });
@@ -141,7 +176,7 @@ export const useTheming = () => {
   const updateTheme = <T>(value: T, type: string, subType: string) => {
     switch (type) {
       case "colorScales":
-        setColorScales(subType, value as string);
+        setColorScales(subType, value);
         break;
       case "borderColor":
         setBorderColor(subType, value as string);
@@ -152,6 +187,8 @@ export const useTheming = () => {
   return {
     themeState,
     updateTheme,
-    colorMethods,
+    colorRgbMethods,
+    colorScales,
+    colorMode,
   };
 };

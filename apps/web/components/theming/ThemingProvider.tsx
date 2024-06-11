@@ -4,7 +4,9 @@ import { FormData, useTheming } from "./useTheming";
 
 export interface ThemingContextType {
   updateTheme: <T>(value: T, type: string, subType: string) => void;
-  colorMethods: UseFormReturn<FormData>;
+  colorRgbMethods: UseFormReturn<FormData>;
+  colorScales: any;
+  colorMode: "rgb" | "hex";
 }
 
 // Create a context for theming
@@ -20,9 +22,11 @@ export const useThemingContext = () => {
 
 // Theming provider component
 export const ThemingProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { colorMethods, updateTheme } = useTheming();
+  const { colorRgbMethods, colorScales, colorMode, updateTheme } = useTheming();
   const context = {
-    colorMethods: colorMethods,
+    colorScales: colorScales,
+    colorRgbMethods: colorRgbMethods,
+    colorMode: colorMode,
     updateTheme: updateTheme,
   };
 

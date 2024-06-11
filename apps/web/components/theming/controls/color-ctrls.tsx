@@ -6,59 +6,59 @@ import { useThemingContext } from "../ThemingProvider";
 interface Props extends HTMLAttributes<HTMLDivElement> {}
 
 export const ColorCtrls: FC<Props> = ({ ...props }) => {
-  const { updateTheme, colorMethods } = useThemingContext(); // Use the context hook to get values
+  const { updateTheme, colorScales, colorRgbMethods, colorMode } = useThemingContext();
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
-    console.log("Submitted");
-    // updateTheme(newColor, type, subType);
+    updateTheme(data, "colorScales", colorMode);
   };
 
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = colorMethods;
+  } = colorRgbMethods;
 
   return (
-    // TODO: extract into UI components
-    <div className="grid w-full grid-cols-2 gap-4">
-      <Form {...colorMethods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {colorMethods.formState.defaultValues &&
-            Object.entries(colorMethods.formState.defaultValues).map(([key, color]) => (
+    <>
+      {colorScales &&
+        Object.entries(colorScales).map(([colorKey, colorValue]) => (
+          <div key={colorKey} className="grid w-full grid-cols-2 gap-4">
+            <Form onSubmit={handleSubmit(onSubmit)} {...colorRgbMethods}>
               <FormField
-                key={key}
                 control={control}
-                name={key}
+                name="position"
                 render={({ field }) => (
                   <FormItem>
-                    <Label htmlFor={key}>{key}</Label>
+                    <Label htmlFor="position">Position</Label>
                     <FormControl>
-                      <Input id={key} placeholder="Enter your name" {...field} />
+                      <Input id="position" placeholder="Enter your name" {...field} />
                     </FormControl>
-                    <FormMessage>{errors[key]?.message}</FormMessage>
+                    <FormMessage>{errors.position?.message}</FormMessage>
                   </FormItem>
                 )}
               />
-            ))}
-
-          <button type="submit">Show Results</button>
-        </form>
-      </Form>
-    </div>
+              {colorValue.stops.map((stop, index) => (
+                <FormField
+                  key={`${stop.key}`}
+                  control={control}
+                  name={`${stop.key}`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label htmlFor={`${stop.key}`}>
+                        {stop.key} {colorValue.key}
+                      </Label>
+                      <FormControl>
+                        <Input id={`${stop.key}`} placeholder={`Enter ${stop.key}`} {...field} />
+                      </FormControl>
+                      <FormMessage>{errors[`${stop.key}`]?.message}</FormMessage>
+                    </FormItem>
+                  )}
+                />
+              ))}
+              <Button type="submit">Show Results</Button>
+            </Form>
+          </div>
+        ))}
+    </>
   );
 };
-
-// {
-//   Object.values(colorScales).map((color) => (
-//     <div key={color.key} className="flex flex-col">
-//       <label htmlFor="color-input-value">{color.title} Color</label>
-//       <Input
-//         value={color.defaultRgb}
-//         onChange={(e) => handleChange(e, "colorScales", `${color.key}.defaultRgb`)}
-//         id="color-input-value"
-//       />
-//     </div>
-//   ));
-// }

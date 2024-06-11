@@ -1,4 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
 import { z } from "zod";
@@ -11,6 +10,7 @@ import { useTheming } from "./useTheming";
 
 export const Theming = () => {
   const { themeState } = useTheming();
+
   return (
     <ThemingProvider>
       <main>

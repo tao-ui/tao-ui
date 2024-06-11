@@ -1,10 +1,12 @@
 const INIT_SETTINGS = {
+  colorMode: "rgb",
   colorScales: {
     primary: {
       key: "primary",
       title: "Primary",
-      defaultRgb: "57 68 156",
-      defaultTwClass: "bg-primary",
+      rgb: "57 68 156",
+      hex: "",
+      c: "bg-primary",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-primary-50", rgb: "242 245 252" },
@@ -20,11 +22,33 @@ const INIT_SETTINGS = {
         { key: "950", c: "bg-primary-950", rgb: "33 38 74" },
       ],
     },
+    example: {
+      key: "example",
+      title: "Example",
+      rgb: "",
+      hex: "",
+      c: "bg-example",
+      foreground: "",
+      stops: [
+        { key: "50", c: "bg-secondary-50", rgb: "" },
+        { key: "100", c: "bg-secondary-100", rgb: "" },
+        { key: "200", c: "bg-secondary-200", rgb: "" },
+        { key: "300", c: "bg-secondary-300", rgb: "" },
+        { key: "400", c: "bg-secondary-400", rgb: "" },
+        { key: "500", c: "bg-secondary-500", rgb: "" },
+        { key: "600", c: "bg-secondary-600", rgb: "" },
+        { key: "700", c: "bg-secondary-700", rgb: "" },
+        { key: "800", c: "bg-secondary-800", rgb: "" },
+        { key: "900", c: "bg-secondary-900", rgb: "" },
+        { key: "950", c: "bg-secondary-950", rgb: "" },
+      ],
+    },
     secondary: {
       key: "secondary",
       title: "Secondary",
-      defaultRgb: "153 131 189",
-      defaultTwClass: "bg-secondary",
+      rgb: "153 131 189",
+      hex: "",
+      c: "bg-secondary",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-secondary-50", rgb: "248 247 251" },
@@ -43,8 +67,9 @@ const INIT_SETTINGS = {
     tertiary: {
       key: "tertiary",
       title: "Tertiary",
-      defaultRgb: "207 147 193",
-      defaultTwClass: "bg-tertiary",
+      rgb: "207 147 193",
+      hex: "",
+      c: "bg-tertiary",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-tertiary-50", rgb: "250 245 249" },
@@ -63,8 +88,9 @@ const INIT_SETTINGS = {
     accent: {
       key: "accent",
       title: "Accent",
-      defaultRgb: "243 118 91",
-      defaultTwClass: "bg-accent",
+      rgb: "243 118 91",
+      hex: "",
+      c: "bg-accent",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
@@ -83,8 +109,9 @@ const INIT_SETTINGS = {
     "neutral-cool": {
       key: "neutral-cool",
       title: "Neutral Cool",
-      defaultRgb: "123 121 127",
-      defaultTwClass: "bg-neutral-cool",
+      rgb: "123 121 127",
+      hex: "",
+      c: "bg-neutral-cool",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-neutral-cool-50", rgb: "237 237 237" },
