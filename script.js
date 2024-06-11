@@ -7,9 +7,9 @@ export function colorScalesToCSS(colorScales) {
   for (const key in colorScales) {
     const colorScale = colorScales[key];
     cssVars += `  /* ${colorScale.title} */\n`;
-    cssVars += `  --color-${colorScale.key}: ${colorScale.defaultRgb};\n`;
+    cssVars += `  --color-${colorScale.key}: ${colorScale.rgb};\n`;
     cssVars += `  --color-${colorScale.key}-foreground: ${colorScale.foreground};\n`;
-    cssVars += stopsToCSS(colorScale.stops, colorScale.key, colorScale.defaultRgb);
+    cssVars += stopsToCSS(colorScale.stops, colorScale.key, colorScale.rgb);
   }
   return cssVars;
 }
@@ -29,7 +29,7 @@ export function colorVarsToCSS(colorVars) {
   return cssVars;
 }
 
-export function stopsToCSS(stops, colorKey, defaultRgb) {
+export function stopsToCSS(stops, colorKey, rgb) {
   let cssVars = "";
   stops.forEach((stop, i) => {
     cssVars += `  --color-${colorKey}-${stop.key}: ${stop.rgb};\n`;

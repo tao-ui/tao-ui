@@ -12,7 +12,7 @@ export const ColorScales: FC<any> = () => {
         <div className="flex items-center space-x-4" key={color.key}>
           <span className={clsx(color.c, "inline-block h-10 w-10 rounded-el")}></span>
           <span className="font-bold uppercase">{color.title}</span>
-          <span>{color.defaultRgb}</span>
+          <span>{color.rgb}</span>
         </div>
       ))}
     </div>
