@@ -13,6 +13,7 @@ interface ColorScale {
   rgb: string;
   hex: string;
   c: string;
+  defaultPosition: string;
   foreground: string;
   stops: ColorScalesStop[];
 }
@@ -45,10 +46,12 @@ export interface ThemeSettings {
   width: Record<string, string>;
 }
 
+const STOPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
+
 const THEME_SETTINGS = INIT_SETTINGS as ThemeSettings;
 
 const RAW_HEX_CODES = {
   "neutral-cool-gray": "#7B797F",
 };
 
-export { THEME_SETTINGS, RAW_HEX_CODES };
+export { THEME_SETTINGS, RAW_HEX_CODES, STOPS };

@@ -1,37 +1,88 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import React, { FC, HTMLAttributes } from "react";
+import { useForm } from "react-hook-form";
+import { Form, FormControl, FormField, FormItem, FormMessage, Input, Label } from "tao-react";
+import { z } from "zod";
+import { isValidRGB } from "~/helpers/validation";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+type ColorMethod = {
+  [key: string]: {
+    [key: string]: string;
+  };
+};
 
-export const ColorCtrls: FC<Props> = ({ children }) => {
-  // const {
-  //   control,
-  //   handleSubmit,
-  //   formState: { errors },
-  //   setValue,
-  // } = colorStopsMethods;
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  colorMode: string;
+  color: any;
+  colorMethods: ColorMethod;
+  updateTheme: any;
+}
 
-  // const onSubmit = (data: any) => {
-  //   alert("submitted");
-  //   updateTheme(data, "colorScales", colorMode);
-  // };
+export const ColorCtrl: FC<Props> = ({ children, colorMode, color, colorMethods, updateTheme }) => {
+  const formSchema = z.object({
+    [`${color.key}-${colorMode}`]: z.string().refine(isValidRGB, {
+      message: "RGB must be in the format 255, 255, 255 or similar and each number between 0 and 255.",
+    }),
+  });
 
-  // const handlePositionOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-  //   const newValue = e.target.value;
-  //   setValue(colorDefaultState.value, "255 255 255");
-  //   setColorDefaultState((prevState) => ({
-  //     position: newValue,
-  //     value: prevState.value,
-  //   }));
+  type FormData = z.infer<typeof formSchema>;
 
-  //   alert(newValue);
-  // };
+  const methods = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: colorMethods,
+  });
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = methods;
+
+  const onSubmit = (data: FormData) => {
+    // updateTheme(data, "color-scales", "patch-default-color");
+  };
+
+  const handleDefaultOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const payload: Record<string, string> = {
+      type: color.key,
+    };
+    if (e.target.name === "defaultPosition") {
+      payload.defaultPosition = newValue;
+    }
+    if (e.target.name === "rgb") {
+      payload.rgb = newValue;
+    }
+
+    updateTheme(payload, "color-scales", "patch-default-color");
+  };
 
   return (
-    <>
-      <h4>Colors</h4>
+    <div key={`${color.key}`}>
+      <Form {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormField
+            control={control}
+            name={`${color.key}-${colorMode}`}
+            render={({ field }) => (
+              <FormItem>
+                <Label htmlFor="primary-rgb">
+                  Default: {color.key}-{colorMode}
+                </Label>
+                <FormControl>
+                  <Input id={`${color.key}-${colorMode}`} placeholder={`Enter ${colorMode} value`} {...field} />
+                </FormControl>
+                {/* <FormMessage>{String(errors[`${colorMode}`]?.message) || ""}</FormMessage> */}
+                <FormMessage>{errors[`${color.key}-${colorMode}`]?.message}</FormMessage>
+              </FormItem>
+            )}
+          />
+          <button type="submit">Submit and stuff</button>
+        </form>
+      </Form>
+
       {children}
-      {/* {colorScales &&
-        Object.entries(colorScales).map(([colorKey, colorValue]) => (
+      {/* {color &&
+        Object.entries(color).map(([colorKey, colorValue]) => (
           <ColorCtrls.ColorCtl colorKey={colorKey} colorValue={colorValue} methods={colorStopsMethods[colorKey]} />
           <Form key={colorKey} {...colorRgbMethods}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -98,7 +149,7 @@ export const ColorCtrls: FC<Props> = ({ children }) => {
             </form>
           </Form>
         ))} */}
-    </>
+    </div>
   );
 };
 

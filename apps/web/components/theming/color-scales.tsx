@@ -1,11 +1,8 @@
 import clsx from "clsx";
 import React, { FC } from "react";
 import { type ThemeSettings } from "~/data/settings";
-import { useThemingContext } from "./ThemingProvider";
 
-export const ColorScales: FC<any> = () => {
-  const { updateTheme, colorScales } = useThemingContext();
-
+export const ColorScales: FC<any> = ({ colorScales }) => {
   return (
     <div className="flex-col space-y-2">
       {Object.values(colorScales).map((color) => (

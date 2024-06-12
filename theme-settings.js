@@ -6,6 +6,7 @@ const INIT_SETTINGS = {
       title: "Primary",
       rgb: "57 68 156",
       hex: "",
+      defaultPosition: "800",
       c: "bg-primary",
       foreground: "255 255 255",
       stops: [
@@ -22,27 +23,6 @@ const INIT_SETTINGS = {
         { key: "950", c: "bg-primary-950", rgb: "33 38 74" },
       ],
     },
-    example: {
-      key: "example",
-      title: "Example",
-      rgb: "",
-      hex: "",
-      c: "bg-example",
-      foreground: "",
-      stops: [
-        { key: "50", c: "bg-secondary-50", rgb: "" },
-        { key: "100", c: "bg-secondary-100", rgb: "" },
-        { key: "200", c: "bg-secondary-200", rgb: "" },
-        { key: "300", c: "bg-secondary-300", rgb: "" },
-        { key: "400", c: "bg-secondary-400", rgb: "" },
-        { key: "500", c: "bg-secondary-500", rgb: "" },
-        { key: "600", c: "bg-secondary-600", rgb: "" },
-        { key: "700", c: "bg-secondary-700", rgb: "" },
-        { key: "800", c: "bg-secondary-800", rgb: "" },
-        { key: "900", c: "bg-secondary-900", rgb: "" },
-        { key: "950", c: "bg-secondary-950", rgb: "" },
-      ],
-    },
     secondary: {
       key: "secondary",
       title: "Secondary",
@@ -50,6 +30,7 @@ const INIT_SETTINGS = {
       hex: "",
       c: "bg-secondary",
       foreground: "255 255 255",
+      defaultPosition: "400",
       stops: [
         { key: "50", c: "bg-secondary-50", rgb: "248 247 251" },
         { key: "100", c: "bg-secondary-100", rgb: "242 240 247" },
@@ -69,6 +50,7 @@ const INIT_SETTINGS = {
       title: "Tertiary",
       rgb: "207 147 193",
       hex: "",
+      defaultPosition: "400",
       c: "bg-tertiary",
       foreground: "var(--color-black)",
       stops: [
@@ -91,6 +73,7 @@ const INIT_SETTINGS = {
       rgb: "243 118 91",
       hex: "",
       c: "bg-accent",
+      defaultPosition: "400",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
@@ -112,6 +95,7 @@ const INIT_SETTINGS = {
       rgb: "123 121 127",
       hex: "",
       c: "bg-neutral-cool",
+      defaultPosition: "500",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-neutral-cool-50", rgb: "237 237 237" },
