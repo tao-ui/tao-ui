@@ -7,7 +7,7 @@ interface ColorScalesStop {
   rgb: string;
 }
 
-interface ColorScale {
+export interface ColorScale {
   key: string;
   title: string;
   rgb: string;
@@ -18,11 +18,11 @@ interface ColorScale {
   stops: ColorScalesStop[];
 }
 
-interface ColorScales {
+export interface ColorScales {
   [key: string]: ColorScale;
 }
 
-interface ColorVar {
+export interface ColorVar {
   DEFAULT: string;
   foreground?: string;
   hint?: string;

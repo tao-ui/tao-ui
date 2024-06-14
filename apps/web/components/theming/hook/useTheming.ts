@@ -68,7 +68,6 @@ export const useTheming = () => {
         break;
 
       case "patch-default-color":
-        console.log("patch-default-color 1");
         const updatedStops = themeState.colorScales[value.type].stops.map((stop) => {
           if (stop.key === value.defaultPosition) {
             return {
@@ -85,11 +84,11 @@ export const useTheming = () => {
         };
 
         if (value.rgb) {
-          payload.rgb = value[value.rgb];
+          payload.rgb = value.rgb;
         }
 
         if (value.hex) {
-          payload.hex = value[value.hex];
+          payload.hex = value.hex;
         }
 
         if (value.defaultPosition) {

@@ -4,7 +4,7 @@ import { z } from "zod";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 import { WrapContainer } from "../ui";
 import { ColorScales } from "./color-scales";
-import { ColorCtrl, ColorCtrls, Controls } from "./controls";
+import { ColorCtrl, ColorCtrls, ColorCtrlStop, Controls } from "./controls";
 import { useTheming } from "./hook/useTheming";
 
 export const Theming = () => {
@@ -49,27 +49,23 @@ export const Theming = () => {
               // colorMethods={formMethods.colorMethods}
               >
                 {themeState.colorScales &&
-                  Object.entries(themeState.colorScales).map(([colorKey, color]) => (
-                    <div key={colorKey}>
-                      <p>{color.title}</p>
-
-                      {/* <h5>
-                        {color.title} {colorKey}
-                        {color.stops.map((stop: any) => (
-                          <div key={stop.key}>
-                            <p>{stop.rgb}</p>
-                          </div>
-                          <
-                        ))}
-                      </h5> */}
-
-                      <ColorCtrl
-                        updateTheme={updateTheme}
-                        colorMode={themeState.colorMode}
-                        color={color}
-                        colorMethods={methods.colorMethods[colorKey]}
-                      />
-                    </div>
+                  Object.entries(themeState.colorScales).map(([colorKey, colorValue]) => (
+                    <ColorCtrl
+                      key={colorKey}
+                      colorMethods={methods.colorMethods[colorKey]}
+                      colorMode={themeState.colorMode}
+                      colorValue={colorValue}
+                      updateTheme={updateTheme}
+                    >
+                      {colorValue.stops.map((stop: any) => (
+                        <ColorCtrlStop
+                          key={stop.key}
+                          colorMode={themeState.colorMode}
+                          colorValue={stop[themeState.colorMode]}
+                          updateTheme={updateTheme}
+                        />
+                      ))}
+                    </ColorCtrl>
                   ))}
               </ColorCtrls>
             </Controls>

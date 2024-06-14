@@ -49,7 +49,6 @@ const Template: React.FC = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("log");
     setFormData(data);
   };
 
