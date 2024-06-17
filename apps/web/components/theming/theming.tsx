@@ -3,7 +3,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
 import { z } from "zod";
 import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 import { WrapContainer } from "../ui";
+import { Color } from "./color";
 import { ColorScales } from "./color-scales";
+import { ColorStop } from "./color-stop";
 import { ColorCtrl, ColorCtrls, ColorCtrlStop, Controls } from "./controls";
 import { useTheming } from "./hook/useTheming";
 
@@ -27,7 +29,20 @@ export const Theming = () => {
                 <TabsTrigger value="tab4">UI Dashboard</TabsTrigger>
               </TabsList>
               <TabsContent value="tab1" className="!bg-surface/70 p-4">
-                <ColorScales colorScales={themeState.colorScales} />
+                <ColorScales>
+                  {Object.values(themeState.colorScales).map((color) => (
+                    <Color
+                      key={color.key}
+                      colorClass={color.c}
+                      title={color.title}
+                      colorValue={color.rgb ? color.rgb : color.hex}
+                    >
+                      {color.stops.map((stop) => (
+                        <ColorStop key={`${color.key}-${stop.key}`} colorClass={stop.c} colorKey={stop.key} />
+                      ))}
+                    </Color>
+                  ))}
+                </ColorScales>
               </TabsContent>
               <TabsContent className="!bg-surface/70 p-4" value="tab2">
                 Content 2
@@ -43,11 +58,7 @@ export const Theming = () => {
           <div className="hidden w-1/2 rounded-area bg-surface/70 p-4 lg:block xl:w-2/5">
             <Controls>
               {/* TODO: research/test if memoization is needed */}
-              <ColorCtrls
-              // updateTheme={updateTheme}
-              // colorScales={themeState.colorScales}
-              // colorMethods={formMethods.colorMethods}
-              >
+              <ColorCtrls>
                 {themeState.colorScales &&
                   Object.entries(themeState.colorScales).map(([colorKey, colorValue]) => (
                     <ColorCtrl

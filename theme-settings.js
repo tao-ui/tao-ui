@@ -77,7 +77,7 @@ const INIT_SETTINGS = {
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
-        { key: "100", c: "bg-accent-100", rgb: "253 ,232, 227" },
+        { key: "100", c: "bg-accent-100", rgb: "253 232 227" },
         { key: "200", c: "bg-accent-200", rgb: "253 212 203" },
         { key: "300", c: "bg-accent-300", rgb: "250 182 167" },
         { key: "400", c: "bg-accent-400", rgb: "243 118 91" },
