@@ -23,25 +23,21 @@ export const useTheming = () => {
     };
   };
 
-  const colorStopMethods = { ...colorMethods };
-
   Object.entries(themeState.colorScales).forEach(([key, value]) => {
     colorMethods[key] = {
       [`${themeState.colorScales[key].key}-rgb`]: themeState.colorScales[key].rgb,
       [`${themeState.colorScales[key].key}-hex`]: themeState.colorScales[key].hex,
       defaultPosition: themeState.colorScales[key].defaultPosition,
     };
-    colorStopMethods[key] = {
-      ...STOPS.reduce((acc, stop, index) => {
-        acc[`${key}-${stop}`] = themeState.colorScales[key].stops[index].rgb;
-        return acc;
-      }, {}),
-    };
-  });
 
-  const methods = {
-    colorMethods,
-  };
+    value.stops.forEach((stop: any) => {
+      if (!colorMethods[key]) {
+        colorMethods[key] = {};
+      }
+      colorMethods[key][`${themeState.colorScales[key].key}-${stop.key}-rgb`] = stop.rgb;
+      colorMethods[key][`${themeState.colorScales[key].key}-${stop.key}-hex`] = stop.hex;
+    });
+  });
 
   const updateColorScales = (value: any, subType: string = "put") => {
     let payload;
@@ -122,6 +118,6 @@ export const useTheming = () => {
   return {
     themeState,
     updateTheme,
-    methods,
+    colorMethods,
   };
 };

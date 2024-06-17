@@ -8,7 +8,7 @@ import { ColorCtrl, ColorCtrls, ColorCtrlStop, Controls } from "./controls";
 import { useTheming } from "./hook/useTheming";
 
 export const Theming = () => {
-  const { themeState, methods, updateTheme } = useTheming();
+  const { themeState, colorMethods, updateTheme } = useTheming();
 
   return (
     <main>
@@ -52,14 +52,15 @@ export const Theming = () => {
                   Object.entries(themeState.colorScales).map(([colorKey, colorValue]) => (
                     <ColorCtrl
                       key={colorKey}
-                      colorMethods={methods.colorMethods[colorKey]}
+                      colorMethods={colorMethods[colorKey]}
                       colorMode={themeState.colorMode}
                       colorValue={colorValue}
                       updateTheme={updateTheme}
                     >
-                      {colorValue.stops.map((stop: any) => (
+                      {colorValue.stops.map((stop: any, i) => (
                         <ColorCtrlStop
-                          key={stop.key}
+                          key={`${colorValue.key}-${stop.key}`}
+                          colorKey={`${colorValue.key}-${stop.key}`}
                           colorMode={themeState.colorMode}
                           colorValue={stop[themeState.colorMode]}
                           updateTheme={updateTheme}

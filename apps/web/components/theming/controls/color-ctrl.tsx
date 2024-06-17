@@ -6,6 +6,7 @@ import { z } from "zod";
 import type { ColorScale } from "~/data/settings";
 import { VALIDATE_MSG_RGB } from "~/data/validation";
 import { isValidRGB } from "~/helpers/validation";
+import { ColorCtrlProvider } from "./index";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   colorMode: string;
@@ -45,7 +46,7 @@ export const ColorCtrl: FC<Props> = ({ children, colorMode, colorValue, colorMet
   };
 
   return (
-    <div key={`${colorValue.key}`}>
+    <ColorCtrlProvider control={control} errors={errors}>
       <span>{colorValue.title}</span>
       <Form {...methods}>
         <FormField
@@ -74,19 +75,7 @@ export const ColorCtrl: FC<Props> = ({ children, colorMode, colorValue, colorMet
           )}
         />
         {children}
-        <Button type="submit">submit</Button>
       </Form>
-    </div>
+    </ColorCtrlProvider>
   );
 };
-
-// interface ColorCtlProps {
-//   colorKey: string;
-//   colorValue: any;
-//   methods: any;
-// }
-
-// ColorCtrls.ColorCtl = ({ colorKey, colorValue, methods }: ColorCtlProps) => {
-//   // Define your child component here
-//   return <div>{colorKey}</div>;
-// };
