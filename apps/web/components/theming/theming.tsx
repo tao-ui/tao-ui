@@ -1,7 +1,6 @@
 import React from "react";
+import { RxMagnifyingGlass } from "react-icons/rx";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "tao-react";
-import { z } from "zod";
-import { THEME_SETTINGS, type ThemeSettings } from "~/data/settings";
 import { WrapContainer } from "../ui";
 import { Color } from "./color";
 import { ColorScales } from "./color-scales";
@@ -17,7 +16,7 @@ export const Theming = () => {
       <WrapContainer>
         <header className="w-full pb-16 pt-12">
           <h1 className="text-5xl font-bold leading-[4.5rem]">Theming</h1>
-          <h2 className="text-2xl italic">Generate colors, CSS Variables and other options for your theme.</h2>
+          <h2 className="text-3xl italic">Generate colors, CSS Variables and other options for your theme.</h2>
         </header>
         <div className="flex gap-4">
           <section className="w-full lg:w-1/2 xl:w-3/5">
@@ -55,7 +54,7 @@ export const Theming = () => {
               </TabsContent>
             </Tabs>
           </section>
-          <div className="hidden w-1/2 rounded-area bg-surface/70 p-4 lg:block xl:w-2/5">
+          <aside className="hidden w-1/2 rounded-area bg-surface/70 p-4 !pt-0 lg:block xl:w-2/5">
             <Controls>
               {/* TODO: research/test if memoization is needed */}
               <ColorCtrls>
@@ -63,6 +62,7 @@ export const Theming = () => {
                   Object.entries(themeState.colorScales).map(([colorKey, colorValue]) => (
                     <ColorCtrl
                       key={colorKey}
+                      title={colorValue.title}
                       colorMethods={colorMethods[colorKey]}
                       colorMode={themeState.colorMode}
                       colorValue={colorValue}
@@ -72,6 +72,7 @@ export const Theming = () => {
                         <ColorCtrlStop
                           key={`${colorValue.key}-${stop.key}`}
                           colorKey={`${colorValue.key}-${stop.key}`}
+                          stopKey={stop.key}
                           colorMode={themeState.colorMode}
                           colorValue={stop[themeState.colorMode]}
                           updateTheme={updateTheme}
@@ -81,7 +82,7 @@ export const Theming = () => {
                   ))}
               </ColorCtrls>
             </Controls>
-          </div>
+          </aside>
         </div>
       </WrapContainer>
     </main>

@@ -1,12 +1,15 @@
 import React, { FC, HTMLAttributes } from "react";
+import { CtrlHead } from "./ctrl-head";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  className?;
+}
 
-export const ColorCtrls: FC<Props> = ({ children }) => {
+export const ColorCtrls: FC<Props> = ({ children, className }) => {
   return (
-    <>
-      <h4>Colors</h4>
-      {children}
-    </>
+    <div>
+      <CtrlHead title="Colors" />
+      <>{children}</>
+    </div>
   );
 };

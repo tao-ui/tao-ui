@@ -7,9 +7,10 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   colorMode: string;
   colorValue: any;
   updateTheme: any;
+  stopKey: string;
 }
 
-export const ColorCtrlStop: FC<Props> = ({ children, colorMode, colorValue, updateTheme, colorKey }) => {
+export const ColorCtrlStop: FC<Props> = ({ children, colorMode, colorValue, updateTheme, colorKey, stopKey }) => {
   const ctrlContext = useColorCtrlContext();
   const { control, errors } = ctrlContext;
 
@@ -32,9 +33,7 @@ export const ColorCtrlStop: FC<Props> = ({ children, colorMode, colorValue, upda
         name={`${colorKey}-${colorMode}`}
         render={({ field }) => (
           <FormItem>
-            <Label htmlFor={`${colorKey}-${colorMode}`}>
-              Default: {colorKey}-{colorMode}
-            </Label>
+            <Label htmlFor={`${colorKey}-${colorMode}`}>{stopKey}</Label>
             <FormControl>
               <Input
                 id={`${colorKey}-${colorMode}`}

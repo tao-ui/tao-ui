@@ -6,8 +6,9 @@ import { Header } from "~/components/header";
 import "~/styles/globals.css";
 
 const interFont = InterFont({
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
   variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
