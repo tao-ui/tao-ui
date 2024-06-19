@@ -39,56 +39,48 @@ export const useTheming = () => {
     });
   });
 
-  const updateColorScales = (value: any, subType: string = "put") => {
+  const updateColorScales = (value: any, subType: string) => {
     let payload;
+    let updatedStops;
+
+    const updateStop = () => {
+      return themeState.colorScales[value.colorNameKey].stops.map((stop) => {
+        if (stop.key === value.stop) {
+          return {
+            ...stop,
+            [value.colorMode]: value[value.colorMode],
+          };
+        }
+        return stop;
+      });
+    };
 
     switch (subType) {
-      case "put":
-        const stops = STOPS.map((stop) => ({
-          key: stop,
-          c: `bg-${value.type}-${stop}`,
-          [`${value.type}`]: value[`${stop}`],
-        }));
-        payload = {
-          [`${value.type}`]: {
-            key: value.type,
-            title: value.type,
-            rgb: value.type === "rgb" ? value[value[value.defaultPosition]] : themeState.colorScales[value.type].rgb,
-            hex: value.type === "hex" ? value[value[value.defaultPosition]] : themeState.colorScales[value.type].hex,
-            c: `bg-${value.type}`,
-            foreground: value.foreground,
-            stops: stops,
-          },
-        };
-        dispatch({ type: "PUT_COLOR_SCALES", payload });
-        break;
-
-      case "patch-default-color":
-        const updatedStops = themeState.colorScales[value.type].stops.map((stop) => {
-          if (stop.key === value.defaultPosition) {
-            return {
-              ...stop,
-              [value.type]: value[value.type],
-            };
-          }
-          return stop;
-        });
+      case "put-stops":
+        updatedStops = updateStop();
 
         payload = {
-          ...themeState.colorScales[value.type],
+          key: value.colorNameKey,
           stops: updatedStops,
         };
 
-        if (value.rgb) {
+        dispatch({ type: "PUT_COLOR_STOPS", payload: payload });
+        break;
+
+      case "patch-default-color":
+        updatedStops = updateStop();
+
+        payload = {
+          ...themeState.colorScales[value.colorNameKey],
+          stops: updatedStops,
+        };
+
+        if (value.colorMode === "rgb") {
           payload.rgb = value.rgb;
         }
 
-        if (value.hex) {
+        if (value.colorMode === "hex") {
           payload.hex = value.hex;
-        }
-
-        if (value.defaultPosition) {
-          payload.defaultPosition = value.defaultPosition;
         }
 
         dispatch({ type: "PATCH_COLOR_SCALES", payload: payload });
@@ -104,7 +96,7 @@ export const useTheming = () => {
   type UpdateThemeSubtypes = "put" | "patch-default-color";
   type UpdateThemeTypes = "color-scales" | "border-color";
 
-  const updateTheme = <T>(value: T, type: UpdateThemeTypes, subType: UpdateThemeSubtypes = "put") => {
+  const updateTheme = <T>(value: T, type: UpdateThemeTypes, subType: UpdateThemeSubtypes) => {
     switch (type) {
       case "color-scales":
         updateColorScales(value, subType);

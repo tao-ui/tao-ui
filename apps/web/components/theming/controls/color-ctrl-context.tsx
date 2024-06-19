@@ -2,8 +2,7 @@ import React, { createContext, ReactNode, useContext } from "react";
 import { useForm, UseFormReturn } from "react-hook-form";
 
 interface ColorCtrlContextProps {
-  errors: any;
-  control: any;
+  methods: any;
 }
 
 const ColorCtrlContext = createContext<ColorCtrlContextProps | undefined>(undefined);
@@ -18,10 +17,9 @@ export const useColorCtrlContext = () => {
 
 interface ColorCtrlProviderProps {
   children: ReactNode;
-  errors: any;
-  control: any;
+  methods: any;
 }
 
-export const ColorCtrlProvider: React.FC<ColorCtrlProviderProps> = ({ children, errors, control }) => {
-  return <ColorCtrlContext.Provider value={{ errors, control }}>{children}</ColorCtrlContext.Provider>;
+export const ColorCtrlProvider: React.FC<ColorCtrlProviderProps> = ({ children, methods }) => {
+  return <ColorCtrlContext.Provider value={{ methods }}>{children}</ColorCtrlContext.Provider>;
 };

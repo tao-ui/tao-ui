@@ -10,9 +10,9 @@ import { CtrlSubhead } from "./ctrl-subhead";
 import { ColorCtrlProvider } from "./index";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  colorMethods: any;
   colorMode: string;
   colorValue: ColorScale;
-  colorMethods: any;
   title: string;
   updateTheme: any;
 }
@@ -35,12 +35,13 @@ export const ColorCtrl: FC<Props> = ({ children, colorMode, colorValue, colorMet
   } = methods;
 
   const handleDefaultOnBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
-    const fieldName = `${colorMode}`;
+    const fieldName = colorMode;
     const isValid = await methods.trigger(fieldName);
 
     if (isValid) {
       const payload: Record<string, string> = {
-        type: colorValue.key,
+        colorNameKey: colorValue.key,
+        colorMode: colorMode,
         [fieldName]: e.target.value,
       };
       updateTheme(payload, "color-scales", "patch-default-color");
@@ -48,7 +49,7 @@ export const ColorCtrl: FC<Props> = ({ children, colorMode, colorValue, colorMet
   };
 
   return (
-    <ColorCtrlProvider control={control} errors={errors}>
+    <ColorCtrlProvider methods={methods}>
       <CtrlSubhead title={colorValue.title} />
       <div className="grid grid-cols-2 gap-x-4 gap-y-2 pb-8">
         <Form {...methods}>

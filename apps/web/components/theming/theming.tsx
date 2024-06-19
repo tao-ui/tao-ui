@@ -37,15 +37,20 @@ export const Theming = () => {
               </TabsList>
               <TabsContent value="tab1" bg="bg-surface/70" className="p-4">
                 <ColorScales>
-                  {Object.values(themeState.colorScales).map((color) => (
+                  {Object.values(themeState.colorScales).map((colorValue) => (
                     <Color
-                      key={color.key}
-                      colorClass={color.c}
-                      title={color.title}
-                      colorValue={color.rgb ? color.rgb : color.hex}
+                      key={`${colorValue.c}`}
+                      colorClass={colorValue.c}
+                      title={colorValue.title}
+                      colorValue={colorValue.rgb ? colorValue.rgb : colorValue.hex}
                     >
-                      {color.stops.map((stop) => (
-                        <ColorStop key={`${color.key}-${stop.key}`} colorClass={stop.c} colorKey={stop.key} />
+                      {colorValue.stops.map((stop) => (
+                        <ColorStop
+                          key={`${colorValue.key}-${stop.key}`}
+                          value={stop.rgb}
+                          colorClass={stop.c}
+                          colorKey={stop.key}
+                        />
                       ))}
                     </Color>
                   ))}
@@ -69,7 +74,7 @@ export const Theming = () => {
                 {themeState.colorScales &&
                   Object.entries(themeState.colorScales).map(([colorKey, colorValue]) => (
                     <ColorCtrl
-                      key={colorKey}
+                      key={`${colorValue}-${colorKey}`}
                       title={colorValue.title}
                       colorMethods={colorMethods[colorKey]}
                       colorMode={themeState.colorMode}
@@ -82,7 +87,7 @@ export const Theming = () => {
                           colorKey={`${colorValue.key}-${stop.key}`}
                           stopKey={stop.key}
                           colorMode={themeState.colorMode}
-                          colorValue={stop[themeState.colorMode]}
+                          colorNameKey={colorValue.key}
                           updateTheme={updateTheme}
                         />
                       ))}

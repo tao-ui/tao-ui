@@ -4,6 +4,7 @@ type Action =
   | { type: "SET_COLOR_VARS"; payload: ThemeSettings["colorVars"] }
   | { type: "PUT_COLOR_SCALES"; payload: ThemeSettings["colorScales"] }
   | { type: "PATCH_COLOR_SCALES"; payload: ThemeSettings["colorScales"]["primary"] }
+  | { type: "PUT_COLOR_STOPS"; payload: ThemeSettings["colorScales"]["stops"] }
   | { type: "SET_BORDER_COLOR"; payload: ThemeSettings["borderColor"] }
   | { type: "SET_BORDER_WIDTH"; payload: ThemeSettings["borderWidth"] }
   | { type: "SET_BOX_SHADOW"; payload: ThemeSettings["boxShadow"] }
@@ -20,11 +21,6 @@ export const themeReducer = (state: ThemeSettings, action: Action) => {
         ...state,
         colorVars: action.payload,
       };
-    case "PUT_COLOR_SCALES":
-      return {
-        ...state,
-        colorScales: action.payload,
-      };
     case "PATCH_COLOR_SCALES":
       return {
         ...state,
@@ -33,6 +29,20 @@ export const themeReducer = (state: ThemeSettings, action: Action) => {
           [action.payload.key]: action.payload,
         },
       };
+    case "PUT_COLOR_STOPS":
+      const help = {
+        ...state,
+        colorScales: {
+          ...state.colorScales,
+          [action.payload.key]: {
+            ...state.colorScales[action.payload.key],
+            stops: action.payload.stops,
+          },
+        },
+      };
+
+      return help;
+
     case "SET_BORDER_COLOR":
       return {
         ...state,

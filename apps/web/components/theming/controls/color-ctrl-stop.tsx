@@ -5,25 +5,34 @@ import { useColorCtrlContext } from "./color-ctrl-context";
 interface Props extends HTMLAttributes<HTMLDivElement> {
   colorKey: string;
   colorMode: string;
-  colorValue: any;
-  updateTheme: any;
+  colorNameKey: string;
   stopKey: string;
+  updateTheme: any;
 }
 
-export const ColorCtrlStop: FC<Props> = ({ children, colorMode, colorValue, updateTheme, colorKey, stopKey }) => {
+export const ColorCtrlStop: FC<Props> = ({ children, colorKey, colorMode, colorNameKey, stopKey, updateTheme }) => {
   const ctrlContext = useColorCtrlContext();
-  const { control, errors } = ctrlContext;
+  const { methods } = ctrlContext;
+
+  const {
+    control,
+    formState: { errors },
+  } = methods;
 
   const handleDefaultOnBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
-    // const fieldName = `${colorMode}`;
-    // const isValid = await methods.trigger(fieldName);
-    // if (isValid) {
-    //   const payload: Record<string, string> = {
-    //     type: colorValue.key,
-    //     [fieldName]: e.target.value,
-    //   };
-    //   updateTheme(payload, "color-scales", "patch-default-color");
-    // }
+    const fieldName = colorMode;
+    const isValid = await methods.trigger(fieldName);
+
+    if (isValid) {
+      const payload: Record<string, string> = {
+        colorMode,
+        colorNameKey,
+        stop: stopKey,
+        [fieldName]: e.target.value,
+      };
+
+      updateTheme(payload, "color-scales", "put-stops");
+    }
   };
 
   return (
