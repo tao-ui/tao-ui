@@ -207,8 +207,12 @@ const INIT_SETTINGS = {
     input: "var(--border-el)",
   },
   boxShadow: {
-    area: "0 2px 4px 0 var(--color-black) / 0.1;",
-    el: "0 1px 2px 0 var(--color-black) / 0.1;",
+    area: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    el: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    button: "var(--shadow-el)",
+    input: "var(--shadow-el)",
+    tab: "0 -1px 3px 0 rgb(0 0 0 / 0.1), 0 -1px 2px -1px rgb(0 0 0 / 0.1)",
+    "tab-content": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   },
   fontFamily: {
     sans: [
@@ -509,12 +513,6 @@ const SETTINGS_OPTS = {
     input: {
       DEFAULT: "rgb(var(--color-input) / <alpha-value>)",
     },
-    tab: {
-      DEFAULT: "rgb(var(--color-tab) / <alpha-value>)",
-      active: "rgb(var(--color-tab-active) / <alpha-value>)",
-      content: "rgb(var(--color-tab-content) / <alpha-value>)",
-      foreground: "rgb(var(--color-tab-foreground) / <alpha-value>)",
-    },
     "btn-primary": {
       DEFAULT: "rgb(var(--color-btn-primary) / <alpha-value>)",
       foreground: "rgb(var(--color-btn-primary-foreground) / <alpha-value>)",
@@ -561,8 +559,12 @@ const SETTINGS_OPTS = {
     input: "var(--border-input)",
   },
   boxShadow: {
-    area: "var(--box-shadow-area)",
-    el: "var(--box-shadow-el)",
+    area: "var(--shadow-area)",
+    el: "var(--shadow-el)",
+    button: "var(--shadow-button)",
+    input: "var(--shadow-input)",
+    tab: "var(--shadow-tab)",
+    "tab-content": "var(--shadow-tab-content)",
   },
   fontSize: {
     "btn-lg": "var(--font-size-btn-lg)",
