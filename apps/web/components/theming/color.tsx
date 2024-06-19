@@ -6,7 +6,7 @@ export const Color: FC<any> = ({ colorClass, title, colorValue, children }) => {
   return (
     <>
       <div className="flex items-center space-x-4">
-        <span className={clsx(colorClass, "inline-block h-10 w-10 rounded-el")}></span>
+        <span className={clsx(colorClass, "inline-block h-10 w-10 rounded-el shadow-el")}></span>
         <span className="text-xl font-[500]">{title}</span>
         <span>{colorValue}</span>
       </div>
