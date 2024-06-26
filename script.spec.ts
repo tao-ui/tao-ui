@@ -46,11 +46,11 @@ describe("Root Script / colorVarsToCSS", () => {
     expect(colorVarsToCSS(INIT_SETTINGS.colorVars)).toContain("--color-white:");
   });
 
-  it("returned string should contain '--color-surface:'", () => {
-    expect(colorVarsToCSS(INIT_SETTINGS.colorVars)).toContain("--color-surface:");
+  it("returned string should contain '--color-level-2:'", () => {
+    expect(colorVarsToCSS(INIT_SETTINGS.colorVars)).toContain("--color-level-2:");
   });
 
-  it("returned string should contain '--color-raised-foreground:'", () => {
-    expect(colorVarsToCSS(INIT_SETTINGS.colorVars)).toContain("--color-raised-foreground:");
+  it("returned string should contain '--color-level-3-foreground:'", () => {
+    expect(colorVarsToCSS(INIT_SETTINGS.colorVars)).toContain("--color-level-3-foreground:");
   });
 });

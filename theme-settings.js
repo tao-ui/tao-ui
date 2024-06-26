@@ -139,27 +139,27 @@ const INIT_SETTINGS = {
       high: "var(--neutral-cool-800)",
       low: "var(--neutral-cool-200)",
     },
-    page: {
+    level: {
       DEFAULT: "247 247 247",
       foreground: "var(--color-black)",
     },
-    surface: {
+    "level-2": {
       DEFAULT: "var(--color-white)",
       foreground: "var(--color-black)",
     },
-    raised: {
-      DEFAULT: "var(--color-neutral-cool-50)",
+    "level-3": {
+      DEFAULT: "var(--color-neutral-cool-500)",
       foreground: "var(--color-black)",
     },
     input: {
-      DEFAULT: "var(--color-page)",
+      DEFAULT: "var(--color-level)",
       foreground: "var(--color-black)",
       hint: "var(--color-muted)",
     },
     tab: {
-      DEFAULT: "var(--color-raised)",
-      active: "var(--color-surface)",
-      content: "var(--color-surface)",
+      DEFAULT: "var(--color-level-3)",
+      active: "var(--color-level-2)",
+      content: "var(--color-level-2)",
       foreground: "var(--color-black)",
     },
     "btn-primary": {
@@ -179,7 +179,7 @@ const INIT_SETTINGS = {
       DEFAULT: "var(--color-primary)",
     },
     "chip-primary": {
-      DEFAULT: "var(--color-surface)",
+      DEFAULT: "var(--color-level-2)",
       foreground: "var(--color-black)",
     },
     checkbox: {
@@ -188,9 +188,9 @@ const INIT_SETTINGS = {
     },
   },
   borderColor: {
-    raised: "var(--color-neutral-cool-100)",
-    surface: "var(--color-raised)",
-    "input-color": "var(--color-neutral-cool-300)",
+    "level-3-color": "var(--color-neutral-cool-400)",
+    "level-2-color": "var(--color-neutral-cool-200)",
+    "level-color": "var(--color-neutral-cool-300)",
   },
   borderRadius: {
     el: "9999px",
@@ -209,7 +209,7 @@ const INIT_SETTINGS = {
   boxShadow: {
     area: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
     el: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-    button: "var(--shadow-el)",
+    btn: "var(--shadow-el)",
     input: "var(--shadow-el)",
     tab: "0 -1px 3px 0 rgb(0 0 0 / 0.1), 0 -1px 2px -1px rgb(0 0 0 / 0.1)",
     "tab-content": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
@@ -296,7 +296,7 @@ const INIT_SETTINGS = {
   spacing: {
     btn: ".5rem",
     chip: "0rem",
-    input: ".875rem",
+    input: ".5rem",
     tab: ".25rem",
     "form-item": ".25rem",
     label: ".5rem",
@@ -497,15 +497,15 @@ const SETTINGS_OPTS = {
     white: {
       DEFAULT: "rgb(var(--color-white) / <alpha-value>)",
     },
-    page: {
-      DEFAULT: "rgb(var(--color-page) / <alpha-value>)",
-      foreground: "rgb(var(--color-page-foreground) / <alpha-value>)",
+    level: {
+      DEFAULT: "rgb(var(--color-level) / <alpha-value>)",
+      foreground: "rgb(var(--color-level-foreground) / <alpha-value>)",
     },
-    surface: {
-      DEFAULT: "rgb(var(--color-surface) / <alpha-value>)",
+    "level-2": {
+      DEFAULT: "rgb(var(--color-level-2) / <alpha-value>)",
     },
-    raised: {
-      DEFAULT: "rgb(var(--color-raised) / <alpha-value>)",
+    "level-3": {
+      DEFAULT: "rgb(var(--color-level-3) / <alpha-value>)",
     },
     destructive: {
       DEFAULT: "rgb(var(--color-destructive) / <alpha-value>)",
@@ -540,9 +540,9 @@ const SETTINGS_OPTS = {
     },
   },
   borderColor: {
-    surface: "rgb(var(--border-color-surface))",
-    raised: "rgb(var(--border-color-raised))",
-    "input-color": "rgb(var(--border-input-color))",
+    "level-color": "rgb(var(--border-level-color))",
+    "level-2": "rgb(var(--border-level-2))",
+    "level-3": "rgb(var(--border-level-3))",
   },
   borderRadius: {
     el: "var(--rounded-el)",
@@ -561,7 +561,7 @@ const SETTINGS_OPTS = {
   boxShadow: {
     area: "var(--shadow-area)",
     el: "var(--shadow-el)",
-    button: "var(--shadow-button)",
+    btn: "var(--shadow-btn)",
     input: "var(--shadow-input)",
     tab: "var(--shadow-tab)",
     "tab-content": "var(--shadow-tab-content)",
