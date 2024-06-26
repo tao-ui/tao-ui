@@ -1,13 +1,6 @@
-import React from "react";
+import clsx from "clsx";
+import React, { FC } from "react";
 
-export const ColorScales = ({ colors: any }) => {
-  return (
-    <>
-      <div>name</div>
-      {colors.map((color) => (
-        <div key={color}>{color}</div>
-      ))}
-      <div>rows</div>
-    </>
-  );
+export const ColorScales: FC<any> = ({ children }) => {
+  return <div className="flex-col space-y-2">{children}</div>;
 };

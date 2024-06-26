@@ -7,19 +7,22 @@ interface ColorScalesStop {
   rgb: string;
 }
 
-interface ColorScale {
+export interface ColorScale {
   key: string;
   title: string;
-  defaultRgb: string;
+  rgb: string;
+  hex: string;
+  c: string;
+  defaultPosition: string;
   foreground: string;
   stops: ColorScalesStop[];
 }
 
-interface ColorScales {
+export interface ColorScales {
   [key: string]: ColorScale;
 }
 
-interface ColorVar {
+export interface ColorVar {
   DEFAULT: string;
   foreground?: string;
   hint?: string;
@@ -27,8 +30,10 @@ interface ColorVar {
 }
 
 export interface ThemeSettings {
+  colorMode: "rgb" | "hex";
   colorScales: ColorScales;
   colorVars: Record<string, ColorVar>;
+  backgroundColor: Record<string, string>;
   borderColor: Record<string, String>;
   borderRadius: Record<string, string>;
   borderWidth: Record<string, string>;
@@ -41,10 +46,10 @@ export interface ThemeSettings {
   width: Record<string, string>;
 }
 
-const THEME_SETTINGS = INIT_SETTINGS as ThemeSettings;
+export const STOPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const;
 
-const RAW_HEX_CODES = {
+export const THEME_SETTINGS = INIT_SETTINGS as ThemeSettings;
+
+export const RAW_HEX_CODES = {
   "neutral-cool-gray": "#7B797F",
 };
-
-export { THEME_SETTINGS, RAW_HEX_CODES };

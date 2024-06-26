@@ -1,11 +1,13 @@
-import { check } from "prettier";
-
 const INIT_SETTINGS = {
+  colorMode: "rgb",
   colorScales: {
     primary: {
       key: "primary",
       title: "Primary",
-      defaultRgb: "57 68 156",
+      rgb: "57 68 156",
+      hex: "",
+      defaultPosition: "800",
+      c: "bg-primary",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-primary-50", rgb: "242 245 252" },
@@ -24,8 +26,11 @@ const INIT_SETTINGS = {
     secondary: {
       key: "secondary",
       title: "Secondary",
-      defaultRgb: "153 131 189",
+      rgb: "153 131 189",
+      hex: "",
+      c: "bg-secondary",
       foreground: "255 255 255",
+      defaultPosition: "400",
       stops: [
         { key: "50", c: "bg-secondary-50", rgb: "248 247 251" },
         { key: "100", c: "bg-secondary-100", rgb: "242 240 247" },
@@ -43,7 +48,10 @@ const INIT_SETTINGS = {
     tertiary: {
       key: "tertiary",
       title: "Tertiary",
-      defaultRgb: "207 147 193",
+      rgb: "207 147 193",
+      hex: "",
+      defaultPosition: "400",
+      c: "bg-tertiary",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-tertiary-50", rgb: "250 245 249" },
@@ -62,11 +70,14 @@ const INIT_SETTINGS = {
     accent: {
       key: "accent",
       title: "Accent",
-      defaultRgb: "243 118 91",
+      rgb: "243 118 91",
+      hex: "",
+      c: "bg-accent",
+      defaultPosition: "400",
       foreground: "var(--color-black)",
       stops: [
         { key: "50", c: "bg-accent-50", rgb: "254 244 242" },
-        { key: "100", c: "bg-accent-100", rgb: "253 ,232, 227" },
+        { key: "100", c: "bg-accent-100", rgb: "253 232 227" },
         { key: "200", c: "bg-accent-200", rgb: "253 212 203" },
         { key: "300", c: "bg-accent-300", rgb: "250 182 167" },
         { key: "400", c: "bg-accent-400", rgb: "243 118 91" },
@@ -81,7 +92,10 @@ const INIT_SETTINGS = {
     "neutral-cool": {
       key: "neutral-cool",
       title: "Neutral Cool",
-      defaultRgb: "123 121 127",
+      rgb: "123 121 127",
+      hex: "",
+      c: "bg-neutral-cool",
+      defaultPosition: "500",
       foreground: "255 255 255",
       stops: [
         { key: "50", c: "bg-neutral-cool-50", rgb: "237 237 237" },
@@ -125,27 +139,27 @@ const INIT_SETTINGS = {
       high: "var(--neutral-cool-800)",
       low: "var(--neutral-cool-200)",
     },
-    page: {
-      DEFAULT: "247 247 247",
-      foreground: "var(--color-black)",
-    },
-    surface: {
-      DEFAULT: "var(--color-white)",
-      foreground: "var(--color-black)",
-    },
-    raised: {
+    level: {
       DEFAULT: "var(--color-neutral-cool-50)",
       foreground: "var(--color-black)",
     },
+    "level-2": {
+      DEFAULT: "var(--color-white)",
+      foreground: "var(--color-black)",
+    },
+    "level-3": {
+      DEFAULT: "var(--color-neutral-cool-100)",
+      foreground: "var(--color-black)",
+    },
     input: {
-      DEFAULT: "var(--color-page)",
+      DEFAULT: "var(--color-level)",
       foreground: "var(--color-black)",
       hint: "var(--color-muted)",
     },
     tab: {
-      DEFAULT: "var(--color-raised)",
-      active: "var(--color-surface)",
-      content: "var(--color-surface)",
+      DEFAULT: "var(--color-level-3)",
+      active: "var(--color-level-2)",
+      content: "var(--color-level-2)",
       foreground: "var(--color-black)",
     },
     "btn-primary": {
@@ -165,7 +179,7 @@ const INIT_SETTINGS = {
       DEFAULT: "var(--color-primary)",
     },
     "chip-primary": {
-      DEFAULT: "var(--color-surface)",
+      DEFAULT: "var(--color-level-2)",
       foreground: "var(--color-black)",
     },
     checkbox: {
@@ -174,9 +188,9 @@ const INIT_SETTINGS = {
     },
   },
   borderColor: {
-    raised: "var(--color-neutral-cool-100)",
-    surface: "var(--color-raised)",
-    "input-color": "var(--color-neutral-cool-300)",
+    "level-3-color": "var(--color-neutral-cool-300)",
+    "level-2-color": "var(--color-neutral-cool-100)",
+    "level-color": "var(--color-neutral-cool-200)",
   },
   borderRadius: {
     el: "9999px",
@@ -193,18 +207,22 @@ const INIT_SETTINGS = {
     input: "var(--border-el)",
   },
   boxShadow: {
-    area: "0 2px 4px 0 var(--color-black) / 0.1;",
-    el: "0 1px 2px 0 var(--color-black) / 0.1;",
+    area: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    el: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    btn: "var(--shadow-el)",
+    input: "var(--shadow-el)",
+    tab: "0 -1px 3px 0 rgb(0 0 0 / 0.1), 0 -1px 2px -1px rgb(0 0 0 / 0.1)",
+    "tab-content": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
   },
   fontFamily: {
     sans: [
-      "Inter",
+      "var(--font-inter)",
       "ui-sans-serif",
       "system-ui",
       "-apple-system",
       "system-ui",
       "Segoe UI",
-      "Roboto",
+      "Inter",
       "Helvetica Neue",
       "Arial",
       "Noto Sans",
@@ -215,13 +233,13 @@ const INIT_SETTINGS = {
       "Noto Color Emoji",
     ],
     body: [
-      "Inter",
+      "var(--font-inter)",
       "ui-sans-serif",
       "system-ui",
       "-apple-system",
       "system-ui",
       "Segoe UI",
-      "Roboto",
+      "Inter",
       "Helvetica Neue",
       "Arial",
       "Noto Sans",
@@ -254,6 +272,9 @@ const INIT_SETTINGS = {
   fontWeight: {
     btn: "700",
   },
+  fontWeight: {
+    btn: "700",
+  },
   height: {
     "btn-icon": "2.25rem",
     "btn-lg": "3.375rem",
@@ -275,7 +296,7 @@ const INIT_SETTINGS = {
   spacing: {
     btn: ".5rem",
     chip: "0rem",
-    input: ".875rem",
+    input: ".5rem",
     tab: ".25rem",
     "form-item": ".25rem",
     label: ".5rem",
@@ -476,27 +497,21 @@ const SETTINGS_OPTS = {
     white: {
       DEFAULT: "rgb(var(--color-white) / <alpha-value>)",
     },
-    page: {
-      DEFAULT: "rgb(var(--color-page) / <alpha-value>)",
-      foreground: "rgb(var(--color-page-foreground) / <alpha-value>)",
+    level: {
+      DEFAULT: "rgb(var(--color-level) / <alpha-value>)",
+      foreground: "rgb(var(--color-level-foreground) / <alpha-value>)",
     },
-    surface: {
-      DEFAULT: "rgb(var(--color-surface) / <alpha-value>)",
+    "level-2": {
+      DEFAULT: "rgb(var(--color-level-2) / <alpha-value>)",
     },
-    raised: {
-      DEFAULT: "rgb(var(--color-raised) / <alpha-value>)",
+    "level-3": {
+      DEFAULT: "rgb(var(--color-level-3) / <alpha-value>)",
     },
     destructive: {
       DEFAULT: "rgb(var(--color-destructive) / <alpha-value>)",
     },
     input: {
       DEFAULT: "rgb(var(--color-input) / <alpha-value>)",
-    },
-    tab: {
-      DEFAULT: "rgb(var(--color-tab) / <alpha-value>)",
-      active: "rgb(var(--color-tab-active) / <alpha-value>)",
-      content: "rgb(var(--color-tab-content) / <alpha-value>)",
-      foreground: "rgb(var(--color-tab-foreground) / <alpha-value>)",
     },
     "btn-primary": {
       DEFAULT: "rgb(var(--color-btn-primary) / <alpha-value>)",
@@ -525,9 +540,9 @@ const SETTINGS_OPTS = {
     },
   },
   borderColor: {
-    surface: "rgb(var(--border-color-surface))",
-    raised: "rgb(var(--border-color-raised))",
-    "input-color": "rgb(var(--border-input-color))",
+    "level-color": "rgb(var(--border-level-color))",
+    "level-2": "rgb(var(--border-level-2-color))/40",
+    "level-3": "rgb(var(--border-level-3-color))",
   },
   borderRadius: {
     el: "var(--rounded-el)",
@@ -544,8 +559,12 @@ const SETTINGS_OPTS = {
     input: "var(--border-input)",
   },
   boxShadow: {
-    area: "var(--box-shadow-area)",
-    el: "var(--box-shadow-el)",
+    area: "var(--shadow-area)",
+    el: "var(--shadow-el)",
+    btn: "var(--shadow-btn)",
+    input: "var(--shadow-input)",
+    tab: "var(--shadow-tab)",
+    "tab-content": "var(--shadow-tab-content)",
   },
   fontSize: {
     "btn-lg": "var(--font-size-btn-lg)",
@@ -554,6 +573,9 @@ const SETTINGS_OPTS = {
     input: "var(--font-size-input)",
     label: "var(--font-size-label)",
     aside: "var(--font-size-aside)",
+  },
+  fontWeight: {
+    btn: "var(--font-weight-btn)",
   },
   fontWeight: {
     btn: "var(--font-weight-btn)",

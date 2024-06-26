@@ -9,11 +9,11 @@ import { WrapContainer } from "./ui";
 
 export const Header: FC = () => {
   return (
-    <header className="flex flex-col gap-4">
+    <header className="flex flex-col gap-4 ">
       <Banner />
       {/* NOTE: mobile styles are minimal and temporary until I have a Drawer component solution. They consist of hiding the search and adjust the flex direction. */}
       <WrapContainer
-        className="flex h-input flex-col items-center justify-between gap-x-6 gap-y-2 md:flex-row"
+        className="mb-4 flex h-input flex-col items-center justify-between gap-x-6 gap-y-2 md:flex-row"
         as="section"
       >
         <Link
@@ -22,7 +22,7 @@ export const Header: FC = () => {
         >
           <Image width={147} height={37} alt="Tao UI Logo" src="/tao-logo.svg" />
         </Link>
-        <nav className="flex size-full items-center justify-start gap-6 rounded-full border-el border-neutral-cool-300 bg-surface px-6 py-2 uppercase">
+        <nav className="flex size-full items-center justify-start gap-6 rounded-full border-el border-neutral-cool-300 bg-level-2 px-6 py-2 uppercase">
           <Link href="#">Docs</Link>
           <Link href="/theming">Theming</Link>
           <Link href="/sponsor">Sponsor</Link>

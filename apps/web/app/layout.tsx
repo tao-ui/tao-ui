@@ -6,8 +6,9 @@ import { Header } from "~/components/header";
 import "~/styles/globals.css";
 
 const interFont = InterFont({
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
   variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={`${interFont.variable} font-sans`}>
       <head></head>
-      <body className="bg-page">
+      <body className="bg-level/40">
         <Header />
         {children}
       </body>
