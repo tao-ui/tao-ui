@@ -1,4 +1,3 @@
-import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 import { SelectHTMLAttributes } from "react";
 import * as React from "react";
@@ -9,34 +8,19 @@ const SelectBase = "w-full bg-transparent appearance-none";
 
 const IconBase = "w-input-icon mr-input";
 
-const SelectVariants = cva(SelectWrapperBase, {
-  variants: {
-    color: {
-      default: "bg-surface border-surface placeholder-surface-hint",
-      raised: "bg-raised border-raised placeholder-raised-hint",
-    },
-    size: {
-      default: "p-input",
-      sm: "p-input-sm",
-    },
-  },
-  defaultVariants: {
-    color: "default",
-    size: "default",
-  },
-});
-
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
-  color?: "default" | "raised" | undefined;
+  border?: string;
+  borderColor?: string;
+  bg?: string;
+  describedBy?: string;
   disabled?: boolean;
   error?: string;
+  ErrorIcon?: React.ReactNode;
   errorImgSrc?: string;
-  describedBy?: string;
   id: string;
   LeadIcon?: React.ReactNode;
-  options: (number | string)[];
-  ErrorIcon?: React.ReactNode;
+  selectSize?: string;
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
@@ -44,15 +28,17 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     {
       children,
       className,
-      color,
+      bg = "bg-level-2",
+      border = "border-input",
+      borderColor = "border-level-3-color",
       disabled,
       error,
       ErrorIcon,
       errorImgSrc,
       describedBy,
       id,
+      selectSize = "p-input h-input",
       LeadIcon,
-      options,
       ...props
     },
     ref,
@@ -60,7 +46,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const describedById = describedBy ? `${id}-describedBy` : undefined;
     const errorId = error ? `${id}-error` : undefined;
     return (
-      <div className={clsx(SelectVariants({ color: color, className }))}>
+      <div className={clsx(SelectWrapperBase, bg, borderColor, border, selectSize)}>
         {LeadIcon && <div className={IconBase}>{LeadIcon}</div>}
 
         <select
@@ -72,11 +58,6 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           {...props}
           ref={ref}
         >
-          {/* {options.map((value: string | number) => (
-            <option key={value} value={value}>
-              {value}
-            </option>
-          ))} */}
           {children}
         </select>
 
@@ -88,4 +69,4 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = "Select";
 
-export { Select, SelectBase, SelectVariants };
+export { Select, SelectBase };

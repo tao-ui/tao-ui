@@ -22,16 +22,16 @@ export const Theming = () => {
           <section className="w-full lg:w-1/2 xl:w-3/5">
             <Tabs defaultValue="tab1">
               <TabsList>
-                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70" value="tab1">
+                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70 bg-level" value="tab1">
                   Theming
                 </TabsTrigger>
-                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70" value="tab2">
+                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70 bg-level" value="tab2">
                   Code
                 </TabsTrigger>
-                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70" value="tab3">
+                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70 bg-level" value="tab3">
                   UI Mailer
                 </TabsTrigger>
-                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70" value="tab4">
+                <TabsTrigger bgActive="data-[state=active]:bg-level-2/70 bg-level" value="tab4">
                   UI Dashboard
                 </TabsTrigger>
               </TabsList>

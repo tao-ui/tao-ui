@@ -33,14 +33,14 @@ const TabsTrigger = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Trigg
   (
     {
       className,
-      bg = "bg-raised",
-      bgActive = "data-[state=active]:bg-surface",
+      bg = "bg-level-2",
+      bgActive = "data-[state=active]:bg-level-2",
       bgDisabled = "disabled:opacity-50",
       padding = "p-tab",
       rounded = "rounded-tab",
       shadow = "",
       shadowActive = "data-[state=active]:shadow-tab",
-      text = "text-surface-foreground",
+      text = "text-level-2-foreground",
       ...props
     },
     ref,
@@ -76,7 +76,7 @@ const TabsContent = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Conte
   (
     {
       className,
-      bg = "bg-surface",
+      bg = "bg-level-2",
       padding = "",
       rounded = "rounded-tab-content",
       shadow = "shadow-tab-content",

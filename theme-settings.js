@@ -140,7 +140,7 @@ const INIT_SETTINGS = {
       low: "var(--neutral-cool-200)",
     },
     level: {
-      DEFAULT: "247 247 247",
+      DEFAULT: "var(--color-neutral-cool-50)",
       foreground: "var(--color-black)",
     },
     "level-2": {
@@ -148,7 +148,7 @@ const INIT_SETTINGS = {
       foreground: "var(--color-black)",
     },
     "level-3": {
-      DEFAULT: "var(--color-neutral-cool-500)",
+      DEFAULT: "var(--color-neutral-cool-100)",
       foreground: "var(--color-black)",
     },
     input: {
@@ -188,9 +188,9 @@ const INIT_SETTINGS = {
     },
   },
   borderColor: {
-    "level-3-color": "var(--color-neutral-cool-400)",
-    "level-2-color": "var(--color-neutral-cool-200)",
-    "level-color": "var(--color-neutral-cool-300)",
+    "level-3-color": "var(--color-neutral-cool-300)",
+    "level-2-color": "var(--color-neutral-cool-100)",
+    "level-color": "var(--color-neutral-cool-200)",
   },
   borderRadius: {
     el: "9999px",
@@ -541,8 +541,8 @@ const SETTINGS_OPTS = {
   },
   borderColor: {
     "level-color": "rgb(var(--border-level-color))",
-    "level-2": "rgb(var(--border-level-2))",
-    "level-3": "rgb(var(--border-level-3))",
+    "level-2": "rgb(var(--border-level-2-color))/40",
+    "level-3": "rgb(var(--border-level-3-color))",
   },
   borderRadius: {
     el: "var(--rounded-el)",

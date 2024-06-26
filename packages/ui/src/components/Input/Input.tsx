@@ -32,9 +32,9 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      bg = "bg-input",
+      bg = "bg-level-2",
       border = "border-input",
-      borderColor = "border-input-color",
+      borderColor = "border-le-color",
       children,
       className,
       describedBy,
@@ -42,7 +42,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       error,
       ErrorIcon,
       errorImgSrc,
-      iconBase = "mr-2",
+      iconBase = "w-input-icon mr-input",
       id,
       inputForeground = "input-foreground",
       inputSize = "p-input h-input",
